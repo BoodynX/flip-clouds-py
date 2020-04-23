@@ -14,12 +14,12 @@ class ValueObject(ABC):
     @value.setter
     def value(self, value):
         if hasattr(self, '_value'):
-            raise ImmutableException()
-        self.validate_value(value)
+            raise ImmutableException('Value objects are immutable!')
+        self._validate_value(value)
         self._value = value
 
     @abstractmethod
-    def validate_value(self, value):
+    def _validate_value(self, value):
         """
         Raise an exception here in case submitted value doesn't meet VOs requirements
         """
