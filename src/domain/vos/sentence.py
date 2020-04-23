@@ -13,7 +13,10 @@ class Sentence(ValueObject):
     """
     valid_pattern = re.compile(r'^[\w\' -]+$')
 
-    def validate_value(self, value: str):
+    def _validate_value(self, value: str):
+        if not value:
+            raise self.InvalidSentence()
+        value = value.strip()
         if not self.valid_pattern.match(value):
             raise self.InvalidSentence()
 
