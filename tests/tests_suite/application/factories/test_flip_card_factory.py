@@ -3,8 +3,8 @@ from uuid import UUID
 
 from src.application.factories.flip_card_factory import FlipCardFactory
 from src.domain.entities.flip_card import FlipCard
-from tests.test_doubles.domain.vos.SentenceBackStub import SentenceBackStub
-from tests.test_doubles.domain.vos.SentenceFrontStub import SentenceFrontStub
+from tests.test_doubles.domain.vos.sentence_back_stub import SentenceBackStub
+from tests.test_doubles.domain.vos.sentence_front_stub import SentenceFrontStub
 
 
 class TestFlipCardFactory(TestCase):

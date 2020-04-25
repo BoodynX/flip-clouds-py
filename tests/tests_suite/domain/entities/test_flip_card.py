@@ -3,9 +3,9 @@ from unittest import TestCase
 from uuid import uuid4
 
 from src.domain.entities.flip_card import FlipCard
-from tests.test_doubles.domain.vos.FamiliarityNoneStub import FamiliarityNoneStub
-from tests.test_doubles.domain.vos.SentenceBackStub import SentenceBackStub
-from tests.test_doubles.domain.vos.SentenceFrontStub import SentenceFrontStub
+from tests.test_doubles.domain.vos.familiarity_none_stub import FamiliarityNoneStub
+from tests.test_doubles.domain.vos.sentence_back_stub import SentenceBackStub
+from tests.test_doubles.domain.vos.sentence_front_stub import SentenceFrontStub
 
 
 class TestFlipCard(TestCase):
