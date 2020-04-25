@@ -24,3 +24,7 @@ class ValueObject(ABC):
         Raise an exception here in case submitted value doesn't meet VOs requirements
         """
         pass
+
+    def equals(self, other):
+        return self.value == other.value
+
