@@ -8,8 +8,8 @@ from src.domain.vos.sentence import Sentence
 
 
 class FlipCardFactory(FlipCardFactoryInterface):
-    @staticmethod
-    def create_card(front: Sentence, back: Sentence) -> FlipCard:
+    @classmethod
+    def create_card(cls, front: Sentence, back: Sentence) -> FlipCard:
         return FlipCard(
             id_=uuid4(),
             front=front,
@@ -17,4 +17,3 @@ class FlipCardFactory(FlipCardFactoryInterface):
             familiarity=Familiarity(Familiarity.Level.NONE),
             last_shown=datetime.now()
         )
-
