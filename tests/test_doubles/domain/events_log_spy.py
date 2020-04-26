@@ -4,7 +4,7 @@ from src.domain.events_log import EventsLog
 
 class EventLogSpy(EventsLog):
     def __init__(self):
-        self.calls_stack = []
+        self.call_stack = []
 
     def register(self, event: Event):
-        self.calls_stack.append(event)
+        self.call_stack.append(event)
