@@ -41,7 +41,6 @@ class TestValueObject(TestCase):
 
     class ValueObjectValidateValueExceptionStub(ValueObject):
         def _validate_value(self, value):
-            super()._validate_value(value)  # this is just for full code coverage of the abstract class
             raise TestValueObject.ExampleValidationException()
 
     class ExampleValidationException(Exception):

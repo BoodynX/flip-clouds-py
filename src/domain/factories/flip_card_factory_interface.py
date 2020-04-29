@@ -8,4 +8,4 @@ class FlipCardFactoryInterface(ABC):
     @classmethod
     @abstractmethod
     def create_card(cls, front: Sentence, back: Sentence) -> FlipCard:
-        pass
+        """pass"""
