@@ -8,5 +8,6 @@ class FlipCardRepositoryInterface(ABC):
     def save(self, flip_card: FlipCard):
         """pass"""
 
+    @abstractmethod
     def draw_a_random_card(self) -> FlipCard:
         """pass"""

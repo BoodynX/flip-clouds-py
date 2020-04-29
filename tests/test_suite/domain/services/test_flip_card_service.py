@@ -3,24 +3,39 @@ from unittest import TestCase
 from src.domain.entities.flip_card import FlipCard
 from src.domain.events.new_card_created import NewCardCreated
 from src.domain.services.flip_card_service import FlipCardService
+from tests.test_doubles.domain.entities.flip_card_stub import FlipCardStub
+from tests.test_doubles.domain.events_log_spy import EventLogSpy
 from tests.test_doubles.domain.factories.flip_card_factory_spy import FlipCardFactorySpy
 from tests.test_doubles.domain.repositories.flip_card_repository_spy import FlipCardsRepositorySpy
+from tests.test_doubles.domain.vos.DaysDummy import DaysDummy
 from tests.test_doubles.domain.vos.sentence_back_stub import SentenceBackStub
 from tests.test_doubles.domain.vos.sentence_front_stub import SentenceFrontStub
-from tests.test_doubles.domain.events_log_spy import EventLogSpy
 
 
 class TestFlipCardService(TestCase):
+    def setUp(self):
+        self.events_log = EventLogSpy()
+        self.repository = FlipCardsRepositorySpy()
+        self.flip_card_service = FlipCardService(events_log=self.events_log, repository=self.repository)
+
     def test_adding_flip_card__emit_added_card_event(self):
-        events_log = EventLogSpy()
-        repository = FlipCardsRepositorySpy()
-        flip_card_service = FlipCardService(events_log=events_log, repository=repository)
         sentence_front = SentenceFrontStub()
         sentence_back = SentenceBackStub()
-        flip_card_factory = FlipCardFactorySpy()
+        factory = FlipCardFactorySpy()
 
-        flip_card_service.create_card(front=sentence_front, back=sentence_back, factory=flip_card_factory)
+        self.flip_card_service.create_card(front=sentence_front, back=sentence_back, factory=factory)
 
-        self.assertListEqual(flip_card_factory.call_stack[0], [sentence_front, sentence_back])
-        self.assertIsInstance(repository.call_stack[0], FlipCard)
-        self.assertIsInstance(events_log.call_stack[0], NewCardCreated)
+        self.assertTupleEqual(factory.call_stack[0],
+                              (factory.create_card.__name__, [sentence_front, sentence_back]))
+        self.assertTupleEqual(self.repository.call_stack[0],
+                              (self.repository.save.__name__, FlipCardFactorySpy.flip_card_stub))
+        self.assertEqual(self.events_log.call_stack[0][0], self.events_log.register.__name__)
+        self.assertIsInstance(self.events_log.call_stack[0][1], NewCardCreated)
+
+    def test_drawing_a_card__return_a_random_card(self):
+        flip_card = self.flip_card_service.draw_a_card()
+
+        self.assertIsInstance(flip_card, FlipCard)
+
+
+

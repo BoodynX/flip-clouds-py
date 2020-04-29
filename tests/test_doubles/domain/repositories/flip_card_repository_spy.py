@@ -1,5 +1,6 @@
 from src.domain.entities.flip_card import FlipCard
 from src.domain.repositories.flip_card_repository_interface import FlipCardRepositoryInterface
+from tests.test_doubles.domain.entities.flip_card_stub import FlipCardStub
 
 
 class FlipCardsRepositorySpy(FlipCardRepositoryInterface):
@@ -8,3 +9,6 @@ class FlipCardsRepositorySpy(FlipCardRepositoryInterface):
 
     def save(self, flip_card: FlipCard):
         self.call_stack.append((self.save.__name__, flip_card))
+
+    def draw_a_random_card(self) -> FlipCard:
+        return FlipCardStub()
