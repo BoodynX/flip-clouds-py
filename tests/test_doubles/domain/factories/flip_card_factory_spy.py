@@ -6,8 +6,9 @@ from tests.test_doubles.domain.entities.flip_card_stub import FlipCardStub
 
 class FlipCardFactorySpy(FlipCardFactoryInterface):
     call_stack = []
+    flip_card_stub = FlipCardStub()
 
     @classmethod
     def create_card(cls, front: Sentence, back: Sentence) -> FlipCard:
-        cls.call_stack.append([front, back])
-        return FlipCardStub()
+        cls.call_stack.append((cls.create_card.__name__, [front, back]))
+        return cls.flip_card_stub

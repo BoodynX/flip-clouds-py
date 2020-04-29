@@ -20,11 +20,7 @@ class ValueObject(ABC):
 
     @abstractmethod
     def _validate_value(self, value):
-        """
-        Raise an exception here in case submitted value doesn't meet VOs requirements
-        """
-        pass
+        """ Raise an exception here in case submitted value doesn't meet VOs requirements """
 
     def equals(self, other):
         return self.value == other.value
-

@@ -7,4 +7,4 @@ class EventLogSpy(EventsLog):
         self.call_stack = []
 
     def register(self, event: Event):
-        self.call_stack.append(event)
+        self.call_stack.append([self.register.__name__, event])

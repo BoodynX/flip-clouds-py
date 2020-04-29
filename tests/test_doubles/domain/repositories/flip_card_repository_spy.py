@@ -7,4 +7,4 @@ class FlipCardsRepositorySpy(FlipCardRepositoryInterface):
         self.call_stack = []
 
     def save(self, flip_card: FlipCard):
-        self.call_stack.append(flip_card)
+        self.call_stack.append((self.save.__name__, flip_card))
