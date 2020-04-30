@@ -3,11 +3,11 @@ from unittest import TestCase
 from src.domain.entities.flip_card import FlipCard
 from src.domain.events.new_card_created import NewCardCreated
 from src.domain.services.flip_card_service import FlipCardService
-from tests.test_doubles.domain.events_log_spy import EventLogSpy
-from tests.test_doubles.domain.factories.flip_card_factory_spy import FlipCardFactorySpy
-from tests.test_doubles.domain.repositories.flip_card_repository_spy import FlipCardsRepositorySpy
-from tests.test_doubles.domain.vos.sentence_back_stub import SentenceBackStub
-from tests.test_doubles.domain.vos.sentence_front_stub import SentenceFrontStub
+from tests.unit.domain.events_log_spy import EventLogSpy
+from tests.unit.application.factories.test_doubles.flip_card_factory_spy import FlipCardFactorySpy
+from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import FlipCardsRepositorySpy
+from tests.unit.domain.vos.test_doubles.sentence_back_stub import SentenceBackStub
+from tests.unit.domain.vos.test_doubles.sentence_front_stub import SentenceFrontStub
 
 
 class TestFlipCardService(TestCase):

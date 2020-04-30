@@ -2,8 +2,8 @@ from datetime import datetime
 from uuid import uuid4
 
 from src.domain.entities.flip_card import FlipCard
-from tests.test_doubles.domain.vos.sentence_back_stub import SentenceBackStub
-from tests.test_doubles.domain.vos.sentence_front_stub import SentenceFrontStub
+from tests.unit.domain.vos.test_doubles.sentence_back_stub import SentenceBackStub
+from tests.unit.domain.vos.test_doubles.sentence_front_stub import SentenceFrontStub
 
 
 class FlipCardStub(FlipCard):

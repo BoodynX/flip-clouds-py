@@ -1,6 +1,6 @@
 from src.domain.entities.flip_card import FlipCard
 from src.domain.repositories.flip_card_repository_interface import FlipCardRepositoryInterface
-from tests.test_doubles.domain.entities.flip_card_stub import FlipCardStub
+from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardStub
 
 
 class FlipCardsRepositorySpy(FlipCardRepositoryInterface):
