@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 from src.domain.entities.flip_card import FlipCard
+from src.domain.vos.flip_card_id import FlipCardId
 
 
 class FlipCardRepositoryInterface(ABC):
@@ -9,5 +10,9 @@ class FlipCardRepositoryInterface(ABC):
         """pass"""
 
     @abstractmethod
-    def draw_a_random_card(self) -> FlipCard:
+    def draw_random_new_card(self) -> FlipCard:
+        """pass"""
+
+    @abstractmethod
+    def get_card(self, id_: FlipCardId) -> FlipCard:
         """pass"""
