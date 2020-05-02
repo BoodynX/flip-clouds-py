@@ -15,6 +15,6 @@ class FlipCardsRepositorySpy(FlipCardRepositoryInterface):
         self.call_stack.append((self.draw_random_new_card.__name__,))
         return FlipCardStub()
 
-    def get_card(self, id_: FlipCardId) -> FlipCard:
-        self.call_stack.append((self.get_card.__name__, id_))
+    def get(self, id_: FlipCardId) -> FlipCard:
+        self.call_stack.append((self.get.__name__, id_))
         return FlipCardStub()

@@ -42,5 +42,5 @@ class TestFlipCardService(TestCase):
         flip_card = self.flip_card_service.draw_card_from_plan(day_plan=day_plan)
 
         self.assertIsInstance(flip_card, FlipCard)
-        self.assertEqual(self.repository.call_stack[0][0], self.repository.get_card.__name__)
+        self.assertEqual(self.repository.call_stack[0][0], self.repository.get.__name__)
         self.assertIn(self.repository.call_stack[0][1], day_plan.flip_card_ids)

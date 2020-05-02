@@ -26,4 +26,4 @@ class FlipCardService:
 
     def draw_card_from_plan(self, day_plan: DayPlan) -> FlipCard:
         flip_card_id = choice(tuple(day_plan.flip_card_ids))
-        return self.repository.get_card(id_=flip_card_id)
+        return self.repository.get(id_=flip_card_id)

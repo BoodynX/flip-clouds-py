@@ -14,5 +14,5 @@ class FlipCardRepositoryInterface(ABC):
         """pass"""
 
     @abstractmethod
-    def get_card(self, id_: FlipCardId) -> FlipCard:
+    def get(self, id_: FlipCardId) -> FlipCard:
         """pass"""
