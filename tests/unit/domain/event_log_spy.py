@@ -1,8 +1,8 @@
 from src.domain.events.abstractions.event import Event
-from src.domain.events_log import EventsLog
+from src.domain.event_log import EventLog
 
 
-class EventLogSpy(EventsLog):
+class EventLogSpy(EventLog):
     def __init__(self):
         self.call_stack = []
 

@@ -3,7 +3,7 @@ from enum import Enum
 from src.domain.vos.abstractions.value_object import ValueObject
 
 
-class CardState(ValueObject):
+class CardSideState(ValueObject):
 
     def _validate_value(self, value: 'StateType'):
         if not isinstance(value, self.StateType):
@@ -11,6 +11,7 @@ class CardState(ValueObject):
 
     class StateType(Enum):
         NEW = 'New'
+        DRAWN = 'Drawn'
         PLANNED = 'Planned'
         ARCHIVED = 'Archived'
 

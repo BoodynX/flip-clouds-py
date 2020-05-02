@@ -6,3 +6,10 @@ class SentenceBackStub(Sentence):
 
     def __init__(self):
         pass
+
+
+class SentenceFrontStub(Sentence):
+    value = 'front sentence'
+
+    def __init__(self):
+        pass

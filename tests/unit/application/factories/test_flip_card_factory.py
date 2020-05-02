@@ -3,8 +3,7 @@ from unittest import TestCase
 from src.application.factories.flip_card_factory import FlipCardFactory
 from src.domain.entities.flip_card import FlipCard
 from src.domain.vos.flip_card_id import FlipCardId
-from tests.unit.domain.vos.test_doubles.sentence_back_stub import SentenceBackStub
-from tests.unit.domain.vos.test_doubles.sentence_front_stub import SentenceFrontStub
+from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceBackStub, SentenceFrontStub
 
 
 class TestFlipCardFactory(TestCase):

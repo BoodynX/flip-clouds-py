@@ -2,12 +2,13 @@ from datetime import datetime, timedelta
 from unittest import TestCase
 
 from src.domain.entities.day_plan import DayPlan
+from src.domain.event_log import EventLog
 from src.domain.factories.day_plan_factory_interface import DayPlanFactoryInterface
 from src.domain.services.day_planner import DayPlanner
 from src.domain.vos.day import Day
 from src.domain.vos.day_plan_id import DayPlanId
 from tests.unit.application.factories.test_doubles.day_plan_factory_spy import DayPlanFactorySpy
-from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardStub
+from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardNewStub
 from tests.unit.domain.vos.test_doubles.day_plan_id_stub import DayPlanIdStub
 from tests.unit.domain.vos.test_doubles.number_of_days_stub import NumberOfDaysStub
 from tests.unit.infrastructure.repositories.test_doubles.day_plan_repository_spy import DayPlanRepositorySpy, \
@@ -17,12 +18,13 @@ from tests.unit.infrastructure.repositories.test_doubles.day_plan_repository_spy
 class TestDayPlanner(TestCase):
     def setUp(self) -> None:
         self.factory = DayPlanFactorySpy
-        self.flip_card = FlipCardStub()
+        self.flip_card = FlipCardNewStub()
         self.number_of_days = NumberOfDaysStub()
+        self.event_log = EventLog()
 
     def test_add_first_flip_card_to_plan__x_number_of_days_from_today__flip_card_in_plan(self):
         empty_repository = EmptyDayPlanRepositorySpy()
-        day_planner = DayPlanner(repository=empty_repository, factory=self.factory)
+        day_planner = DayPlanner(event_log=self.event_log, repository=empty_repository, factory=self.factory)
 
         day_planner.add_flip_card_to_day_plan(flip_card=self.flip_card, days=self.number_of_days)
 
@@ -31,7 +33,7 @@ class TestDayPlanner(TestCase):
 
     def test_add_another_flip_card_to_plan__x_number_of_days_from_today__flip_card_in_plan(self):
         repository = DayPlanRepositorySpy()
-        day_planner = DayPlanner(repository=repository, factory=self.factory)
+        day_planner = DayPlanner(event_log=self.event_log, repository=repository, factory=self.factory)
 
         day_planner.add_flip_card_to_day_plan(flip_card=self.flip_card, days=self.number_of_days)
 

@@ -1,6 +1,6 @@
 from src.domain.events.abstractions.event import Event
 
 
-class EventsLog:
+class EventLog:
     def register(self, event: Event):
         """pass"""

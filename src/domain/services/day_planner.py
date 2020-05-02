@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from typing import Type
 
 from src.domain.entities.flip_card import FlipCard
+from src.domain.event_log import EventLog
 from src.domain.factories.day_plan_factory_interface import DayPlanFactoryInterface
 from src.domain.repositories.day_plan_repository_interface import DayPlanRepositoryInterface
 from src.domain.vos.day import Day
@@ -9,12 +10,15 @@ from src.domain.vos.number_of_days import NumberOfDays
 
 
 class DayPlanner:
-    def __init__(self, repository: DayPlanRepositoryInterface, factory: Type[DayPlanFactoryInterface]):
+    def __init__(self, event_log: EventLog,
+                 repository: DayPlanRepositoryInterface,
+                 factory: Type[DayPlanFactoryInterface]):
+        self.event_log = event_log
         self.repository = repository
         self.factory = factory
 
     def add_flip_card_to_day_plan(self, flip_card: FlipCard, days: NumberOfDays):
-        day = self._calculate_date_of_next_appearance(days)
+        day = self._calculate_date_of_next_appearance(days_to_next_appearance=days)
         day_plan = self.repository.get(day=day)
 
         if not day_plan:
