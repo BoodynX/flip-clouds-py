@@ -20,12 +20,12 @@ class TestFlipCardService(TestCase):
     def test_adding_flip_card__emit_added_card_event(self):
         sentence_front = SentenceFrontStub()
         sentence_back = SentenceBackStub()
-        factory = FlipCardFactorySpy()
+        factory = FlipCardFactorySpy
 
         self.flip_card_service.create_card(front=sentence_front, back=sentence_back, factory=factory)
 
         self.assertTupleEqual(factory.call_stack[0],
-                              (factory.create_card.__name__, [sentence_front, sentence_back]))
+                              (factory.create_card.__name__, (sentence_front, sentence_back)))
         self.assertTupleEqual(self.repository.call_stack[0],
                               (self.repository.save.__name__, FlipCardFactorySpy.flip_card_stub))
         self.assertEqual(self.events_log.call_stack[0][0], self.events_log.register.__name__)

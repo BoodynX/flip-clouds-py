@@ -1,5 +1,5 @@
 from random import choice
-from typing import Set
+from typing import Set, Type
 
 from src.domain.entities.flip_card import FlipCard
 from src.domain.events.new_card_created import NewCardCreated
@@ -15,7 +15,7 @@ class FlipCardService:
         self.repository = repository
         self.events_log = events_log
 
-    def create_card(self, front: Sentence, back: Sentence, factory: FlipCardFactoryInterface):
+    def create_card(self, front: Sentence, back: Sentence, factory: Type[FlipCardFactoryInterface]):
         flip_card: FlipCard = factory.create_card(front=front, back=back)
         self.repository.save(flip_card=flip_card)
         self.events_log.register(event=NewCardCreated(flip_card=flip_card))

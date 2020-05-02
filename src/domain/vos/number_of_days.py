@@ -1,6 +1,6 @@
 from src.domain.vos.abstractions.value_object import ValueObject
 
 
-class Days(ValueObject):
+class NumberOfDays(ValueObject):
     def _validate_value(self, value):
-        """pass"""
+        """pass"""  # TODO implement

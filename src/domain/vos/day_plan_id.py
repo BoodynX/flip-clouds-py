@@ -3,10 +3,10 @@ from uuid import UUID
 from src.domain.vos.abstractions.value_object import ValueObject
 
 
-class FlipCardId(ValueObject):
+class DayPlanId(ValueObject):
     def _validate_value(self, value: UUID):
         if not isinstance(value, UUID):
-            raise self.InvalidFlipCardId()
+            raise self.InvalidDayPlanId()
 
-    class InvalidFlipCardId(Exception):
+    class InvalidDayPlanId(Exception):
         """pass"""

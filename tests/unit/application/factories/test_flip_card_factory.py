@@ -1,8 +1,8 @@
 from unittest import TestCase
-from uuid import UUID
 
 from src.application.factories.flip_card_factory import FlipCardFactory
 from src.domain.entities.flip_card import FlipCard
+from src.domain.vos.flip_card_id import FlipCardId
 from tests.unit.domain.vos.test_doubles.sentence_back_stub import SentenceBackStub
 from tests.unit.domain.vos.test_doubles.sentence_front_stub import SentenceFrontStub
 
@@ -17,4 +17,4 @@ class TestFlipCardFactory(TestCase):
         self.assertIsInstance(flip_card, FlipCard)
         self.assertEqual(flip_card.front.value, front_stub.value)
         self.assertEqual(flip_card.back.value, back_stub.value)
-        self.assertIsInstance(flip_card.id_, UUID)
+        self.assertIsInstance(flip_card.id_, FlipCardId)
