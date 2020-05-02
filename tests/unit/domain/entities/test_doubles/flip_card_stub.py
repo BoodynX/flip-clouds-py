@@ -6,19 +6,24 @@ from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceBackStub, S
 
 class FlipCardNewStub(FlipCard):
 
-    def __init__(self):
-        self.id_ = FlipCardIdStub()
-        self.front = SentenceFrontStub()
-        self.back = SentenceBackStub()
-        self.front_state = CardSideStateNewStub()
-        self.back_state = CardSideStateNewStub()
+    def __new__(cls, *args, **kwargs):
+        return FlipCard(
+            id_=FlipCardIdStub(),
+            front=SentenceFrontStub(),
+            back=SentenceBackStub(),
+            front_state=CardSideStateNewStub(),
+            back_state=CardSideStateNewStub()
+        )
 
 
 class FlipCardHalfPlannedStub(FlipCard):
 
-    def __init__(self):
-        self.id_ = FlipCardIdStub()
-        self.front = SentenceFrontStub()
-        self.back = SentenceBackStub()
-        self.front_state = CardSideStateNewStub()
-        self.back_state = CardSideStatePlannedStub()
+    def __new__(cls, *args, **kwargs):
+        return FlipCard(
+            id_=FlipCardIdStub(),
+            front=SentenceFrontStub(),
+            back=SentenceBackStub(),
+            front_state=CardSideStateNewStub(),
+            back_state=CardSideStatePlannedStub()
+        )
+
