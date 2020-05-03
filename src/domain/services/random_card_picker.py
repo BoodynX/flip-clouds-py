@@ -11,7 +11,7 @@ from src.domain.vos.card_side_state import CardSideState
 from src.domain.vos.sentence import Sentence
 
 
-class FlipCardService:
+class RandomCardPicker:
     def __init__(self, event_log: EventLog, repository: FlipCardRepositoryInterface):
         self.repository = repository
         self.event_log = event_log

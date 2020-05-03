@@ -12,3 +12,9 @@ class FlipCardFactorySpy(FlipCardFactoryInterface):
     def create_card(cls, front: Sentence, back: Sentence) -> FlipCard:
         cls.call_stack.append((cls.create_card.__name__, (front, back)))
         return cls.flip_card_stub
+
+    @classmethod
+    def get_fresh_spy(cls):
+        cls.call_stack = []
+        cls.flip_card_stub = FlipCardNewStub()
+        return cls
