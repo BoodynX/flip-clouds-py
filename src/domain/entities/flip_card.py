@@ -1,20 +1,19 @@
 from typing import Union
-from uuid import UUID
 
 from src.domain.entities.abstractions.entity import Entity
 from src.domain.vos.card_side_state import CardSideState
 from src.domain.vos.day import Day
-from src.domain.vos.flip_card_side_id import FlipCardSideId
-from src.domain.vos.sentence import Sentence
 from src.domain.vos.flip_card_id import FlipCardId
+from src.domain.vos.flip_card_side_id import FlipCardSideIdFront, FlipCardSideIdBack
+from src.domain.vos.sentence import Sentence
 
 
 class FlipCard(Entity):
     def __init__(self,
                  id_: FlipCardId,
-                 front_id: FlipCardSideId,
+                 front_id: FlipCardSideIdFront,
                  front: Sentence,
-                 back_id: FlipCardSideId,
+                 back_id: FlipCardSideIdBack,
                  back: Sentence,
                  front_state: CardSideState,
                  back_state: CardSideState,
