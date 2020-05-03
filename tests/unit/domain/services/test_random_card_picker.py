@@ -6,7 +6,7 @@ from src.domain.vos.card_side_state import CardSideState
 from tests.unit.domain.entities.test_doubles.day_plan_stub import DayPlanStub
 from tests.unit.domain.event_log_spy import EventLogSpy
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import \
-    FlipCardsRepositoryNewCardSpy, FlipCardsRepositoryHalfPlannedCardSpy
+    FlipCardsRepositoryNewCardSpy, FlipCardsRepositoryFrontPlannedCardSpy, FlipCardsRepositoryBackPlannedCardSpy
 
 
 class TestRandomCardPicker(TestCase):
@@ -21,8 +21,16 @@ class TestRandomCardPicker(TestCase):
         self.assertIsInstance(flip_card, FlipCard)
         self._assert_one_side_only_is_drawn(flip_card)
 
-    def test_drawing_half_planned_card_from_all_unknown_cards__return_flip_card_with_one_drawn_side(self):
-        repository = FlipCardsRepositoryHalfPlannedCardSpy()
+    def test_drawing_front_planned_card_from_all_unknown_cards__return_flip_card_with_one_drawn_side(self):
+        repository = FlipCardsRepositoryFrontPlannedCardSpy()
+        random_card_picker = RandomCardPicker(event_log=self.event_log, repository=repository)
+        flip_card = random_card_picker.draw_new_card()
+
+        self.assertIsInstance(flip_card, FlipCard)
+        self._assert_one_side_only_is_drawn(flip_card)
+
+    def test_drawing_back_planned_card_from_all_unknown_cards__return_flip_card_with_one_drawn_side(self):
+        repository = FlipCardsRepositoryBackPlannedCardSpy()
         random_card_picker = RandomCardPicker(event_log=self.event_log, repository=repository)
         flip_card = random_card_picker.draw_new_card()
 

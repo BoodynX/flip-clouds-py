@@ -15,7 +15,7 @@ class RandomCardPicker:
     def draw_new_card(self) -> FlipCard:
         flip_card = self.repository.draw_random_new_card()
 
-        if self._new_front_only_left_or_drawn(flip_card):
+        if self._new_front_only_left_or_drawn(flip_card=flip_card):
             flip_card.front_state = CardSideState.StateType.DRAWN
         else:
             flip_card.back_state = CardSideState.StateType.DRAWN
@@ -23,8 +23,10 @@ class RandomCardPicker:
         return flip_card
 
     def draw_card_from_plan(self, day_plan: DayPlan) -> FlipCard:
-        flip_card_side_ids = choice(tuple(day_plan.flip_card_side_ids))
-        return self.repository.get_by_side_id(flip_card_side_id=flip_card_side_ids)
+        flip_card_side_id = choice(tuple(day_plan.flip_card_side_ids))
+        flip_card = self.repository.get_by_side_id(flip_card_side_id=flip_card_side_id)
+
+        return flip_card
 
     @staticmethod
     def _new_front_only_left_or_drawn(flip_card: FlipCard) -> bool:

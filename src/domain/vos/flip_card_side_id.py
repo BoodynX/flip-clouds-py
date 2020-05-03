@@ -7,3 +7,11 @@ class FlipCardSideId(UuidValueObject):
 
     class InvalidFlipCardSideId(UuidValueObject.InvalidUuid):
         """pass"""
+
+
+class FlipCardSideIdFront(FlipCardSideId):
+    """pass"""
+
+
+class FlipCardSideIdBack(FlipCardSideId):
+    """pass"""

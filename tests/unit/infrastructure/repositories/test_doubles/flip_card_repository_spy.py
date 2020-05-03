@@ -1,7 +1,8 @@
 from src.domain.entities.flip_card import FlipCard
 from src.domain.repositories.flip_card_repository_interface import FlipCardRepositoryInterface
 from src.domain.vos.flip_card_side_id import FlipCardSideId
-from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardNewStub, FlipCardHalfPlannedStub
+from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardNewStub, FlipCardFrontPlannedStub, \
+    FlipCardBackPlannedStub
 
 
 class FlipCardsRepositorySpy(FlipCardRepositoryInterface):
@@ -30,11 +31,21 @@ class FlipCardsRepositoryNewCardSpy(FlipCardsRepositorySpy):
         return FlipCardNewStub()
 
 
-class FlipCardsRepositoryHalfPlannedCardSpy(FlipCardsRepositorySpy):
+class FlipCardsRepositoryFrontPlannedCardSpy(FlipCardsRepositorySpy):
 
     def draw_random_new_card(self) -> FlipCard:
         self.call_stack.append((self.draw_random_new_card.__name__,))
-        return FlipCardHalfPlannedStub()
+        return FlipCardFrontPlannedStub()
+
+    def get_by_side_id(self, flip_card_side_id: FlipCardSideId) -> FlipCard:
+        """pass"""
+
+
+class FlipCardsRepositoryBackPlannedCardSpy(FlipCardsRepositorySpy):
+
+    def draw_random_new_card(self) -> FlipCard:
+        self.call_stack.append((self.draw_random_new_card.__name__,))
+        return FlipCardBackPlannedStub()
 
     def get_by_side_id(self, flip_card_side_id: FlipCardSideId) -> FlipCard:
         """pass"""

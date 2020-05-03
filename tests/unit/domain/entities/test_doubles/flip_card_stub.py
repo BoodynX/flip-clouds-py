@@ -21,7 +21,21 @@ class FlipCardNewStub(FlipCard):
         )
 
 
-class FlipCardHalfPlannedStub(FlipCard):
+class FlipCardFrontPlannedStub(FlipCard):
+
+    def __new__(cls, *args, **kwargs):
+        return FlipCard(
+            id_=FlipCardIdStub(),
+            front=SentenceFrontStub(),
+            front_id=FlipCardSideId(uuid4()),
+            back=SentenceBackStub(),
+            back_id=FlipCardSideId(uuid4()),
+            front_state=CardSideStatePlannedStub(),
+            back_state=CardSideStateNewStub()
+        )
+
+
+class FlipCardBackPlannedStub(FlipCard):
 
     def __new__(cls, *args, **kwargs):
         return FlipCard(
@@ -33,4 +47,3 @@ class FlipCardHalfPlannedStub(FlipCard):
             front_state=CardSideStateNewStub(),
             back_state=CardSideStatePlannedStub()
         )
-
