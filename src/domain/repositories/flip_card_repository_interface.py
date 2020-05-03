@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 from src.domain.entities.flip_card import FlipCard
-from src.domain.vos.flip_card_id import FlipCardId
+from src.domain.vos.flip_card_side_id import FlipCardSideId
 
 
 class FlipCardRepositoryInterface(ABC):
@@ -14,5 +14,5 @@ class FlipCardRepositoryInterface(ABC):
         """pass"""
 
     @abstractmethod
-    def get(self, id_: FlipCardId) -> FlipCard:
+    def get_by_side_id(self, flip_card_side_id: FlipCardSideId) -> FlipCard:
         """pass"""

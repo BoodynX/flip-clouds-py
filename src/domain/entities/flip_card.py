@@ -4,6 +4,7 @@ from uuid import UUID
 from src.domain.entities.abstractions.entity import Entity
 from src.domain.vos.card_side_state import CardSideState
 from src.domain.vos.day import Day
+from src.domain.vos.flip_card_side_id import FlipCardSideId
 from src.domain.vos.sentence import Sentence
 from src.domain.vos.flip_card_id import FlipCardId
 
@@ -11,9 +12,9 @@ from src.domain.vos.flip_card_id import FlipCardId
 class FlipCard(Entity):
     def __init__(self,
                  id_: FlipCardId,
-                 front_id: UUID,
+                 front_id: FlipCardSideId,
                  front: Sentence,
-                 back_id: UUID,
+                 back_id: FlipCardSideId,
                  back: Sentence,
                  front_state: CardSideState,
                  back_state: CardSideState,

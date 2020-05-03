@@ -14,11 +14,11 @@ class DayPlanRepositorySpy(DayPlanRepositoryInterface):
         self.call_stack.append((self.save.__name__, day_plan))
 
     def get(self, day: Day) -> DayPlan:
-        self.call_stack.append((self.save.__name__, day))
+        self.call_stack.append((self.get.__name__, day))
         return DayPlanStub()
 
 
 class EmptyDayPlanRepositorySpy(DayPlanRepositorySpy):
     def get(self, day: Day) -> Union[DayPlan, None]:
-        self.call_stack.append((self.save.__name__, day))
+        self.call_stack.append((self.get.__name__, day))
         return None

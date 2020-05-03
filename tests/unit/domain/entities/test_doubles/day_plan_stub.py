@@ -6,8 +6,8 @@ from tests.unit.domain.vos.test_doubles.day_stub import DayStub
 
 class DayPlanStub(DayPlan):
     id_ = DayPlanIdStub()
-    flip_card_ids = {FlipCardNewStub().id_, FlipCardNewStub().id_, FlipCardNewStub().id_}
+    flip_card_side_ids = {FlipCardNewStub().front_id, FlipCardNewStub().back_id, FlipCardNewStub().front_id}
     day = DayStub()
 
     def __init__(self):
-        """pass"""
+        pass
