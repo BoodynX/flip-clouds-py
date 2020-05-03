@@ -12,7 +12,9 @@ class FlipCardFactory(FlipCardFactoryInterface):
     def create_card(cls, front: Sentence, back: Sentence) -> FlipCard:
         return FlipCard(
             id_=FlipCardId(uuid4()),
+            front_id=uuid4(),
             front=front,
+            back_id=uuid4(),
             back=back,
             front_state=CardSideState(CardSideState.StateType.NEW),
             back_state=CardSideState(CardSideState.StateType.NEW)

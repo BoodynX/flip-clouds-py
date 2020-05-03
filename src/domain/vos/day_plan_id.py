@@ -1,12 +1,9 @@
-from uuid import UUID
-
-from src.domain.vos.abstractions.value_object import ValueObject
+from src.domain.vos.abstractions.uuid_value_object import UuidValueObject
 
 
-class DayPlanId(ValueObject):
-    def _validate_value(self, value: UUID):
-        if not isinstance(value, UUID):
-            raise self.InvalidDayPlanId()
+class DayPlanId(UuidValueObject):
+    def _raise_exception(self):
+        raise self.InvalidDayPlanId()
 
-    class InvalidDayPlanId(Exception):
+    class InvalidDayPlanId(UuidValueObject.InvalidUuid):
         """pass"""

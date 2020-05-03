@@ -13,10 +13,10 @@ class FlipCardsRepositorySpy(FlipCardRepositoryInterface):
         self.call_stack.append((self.save.__name__, flip_card))
 
     def draw_random_new_card(self) -> FlipCard:
-        pass
+        """pass"""
 
     def get(self, id_: FlipCardId) -> FlipCard:
-        pass
+        """pass"""
 
 
 class FlipCardsRepositoryNewCardSpy(FlipCardsRepositorySpy):
@@ -37,4 +37,4 @@ class FlipCardsRepositoryHalfPlannedCardSpy(FlipCardsRepositorySpy):
         return FlipCardHalfPlannedStub()
 
     def get(self, id_: FlipCardId) -> FlipCard:
-        pass
+        """pass"""

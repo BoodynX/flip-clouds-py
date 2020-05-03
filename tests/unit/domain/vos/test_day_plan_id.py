@@ -11,7 +11,7 @@ class TestDayPlanId(TestCase):
     def test_invalid_day_plan_id__raise_exception(self):
         self.assertRaises(DayPlanId.InvalidDayPlanId, DayPlanId, self.invalid_id)
 
-    def test_valid_day_plan_id__return_exception(self):
+    def test_valid_day_plan_id__return_instance(self):
         day_plan_id = DayPlanId(self.valid_id)
 
         self.assertEqual(day_plan_id.value, self.valid_id)

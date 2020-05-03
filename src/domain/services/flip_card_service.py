@@ -32,7 +32,9 @@ class FlipCardService:
         return flip_card
 
     def draw_card_from_plan(self, day_plan: DayPlan) -> FlipCard:
+        # TODO Draw side id instead !!!
         flip_card_id = choice(tuple(day_plan.flip_card_ids))
+        # TODO get flip card base on side id !!!
         return self.repository.get(id_=flip_card_id)
 
     @staticmethod
