@@ -38,7 +38,8 @@ class FlipCardsRepositoryFrontPlannedCardSpy(FlipCardsRepositorySpy):
         return FlipCardFrontPlannedStub()
 
     def get_by_side_id(self, flip_card_side_id: FlipCardSideId) -> FlipCard:
-        """pass"""
+        self.call_stack.append((self.get_by_side_id.__name__, flip_card_side_id))
+        return FlipCardFrontPlannedStub()
 
 
 class FlipCardsRepositoryBackPlannedCardSpy(FlipCardsRepositorySpy):
@@ -48,4 +49,5 @@ class FlipCardsRepositoryBackPlannedCardSpy(FlipCardsRepositorySpy):
         return FlipCardBackPlannedStub()
 
     def get_by_side_id(self, flip_card_side_id: FlipCardSideId) -> FlipCard:
-        """pass"""
+        self.call_stack.append((self.get_by_side_id.__name__, flip_card_side_id))
+        return FlipCardFrontPlannedStub()

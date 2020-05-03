@@ -11,3 +11,21 @@ class DayPlanStub(DayPlan):
 
     def __init__(self):
         pass
+
+
+class DayPlanFrontSidesStub(DayPlan):
+    id_ = DayPlanIdStub()
+    flip_card_side_ids = {FlipCardNewStub().front_id, FlipCardNewStub().front_id, FlipCardNewStub().front_id}
+    day = DayStub()
+
+    def __init__(self):
+        pass
+
+
+class DayPlanBackSidesStub(DayPlan):
+    id_ = DayPlanIdStub()
+    flip_card_side_ids = {FlipCardNewStub().back_id, FlipCardNewStub().back_id, FlipCardNewStub().back_id}
+    day = DayStub()
+
+    def __init__(self):
+        pass
