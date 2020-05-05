@@ -1,3 +1,4 @@
+from abc import abstractmethod, ABC
 from random import choice
 
 from src.domain.entities.flip_card import FlipCard
@@ -6,7 +7,13 @@ from src.domain.repositories.flip_card_repository_interface import FlipCardRepos
 from src.domain.vos.card_side_state import CardSideState
 
 
-class NewRandomCardPicker:
+class NewCardPickerInterface(ABC):
+    @abstractmethod
+    def draw_new_card(self):
+        pass
+
+
+class NewCardPicker(NewCardPickerInterface):
     def __init__(self, event_log: EventLog, repository: FlipCardRepositoryInterface):
         self.repository = repository
         self.event_log = event_log

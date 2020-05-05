@@ -8,7 +8,7 @@ from src.domain.vos.card_side_state import CardSideState
 from src.domain.vos.flip_card_side_id import FlipCardSideIdFront, FlipCardSideId
 
 
-class DayPlanRandomCardPicker:
+class DayPlanCardPicker:
     def __init__(self, event_log: EventLog, repository: FlipCardRepositoryInterface):
         self.repository = repository
         self.event_log = event_log

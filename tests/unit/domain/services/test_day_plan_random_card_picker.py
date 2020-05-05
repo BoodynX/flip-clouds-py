@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from src.domain.entities.flip_card import FlipCard
-from src.domain.services.day_plan_random_card_picker import DayPlanRandomCardPicker
+from src.domain.services.day_plan_card_picker import DayPlanCardPicker
 from src.domain.vos.card_side_state import CardSideState
 from tests.unit.domain.entities.test_doubles.day_plan_stub import DayPlanFrontSidesStub, \
     DayPlanBackSidesStub
@@ -17,7 +17,7 @@ class TestDayPlanRandomCardPicker(TestCase):
     def test_drawing_front_side_id_from_day_plan__return_flip_card(self):
         day_plan = DayPlanFrontSidesStub()
         repository = FlipCardsRepositoryFrontPlannedCardSpy()
-        random_card_picker = DayPlanRandomCardPicker(event_log=self.event_log, repository=repository)
+        random_card_picker = DayPlanCardPicker(event_log=self.event_log, repository=repository)
 
         flip_card = random_card_picker.draw_card_from_plan(day_plan=day_plan)
 
@@ -27,7 +27,7 @@ class TestDayPlanRandomCardPicker(TestCase):
     def test_drawing_back_side_id_from_day_plan__return_flip_card(self):
         day_plan = DayPlanBackSidesStub()
         repository = FlipCardsRepositoryBackPlannedCardSpy()
-        random_card_picker = DayPlanRandomCardPicker(event_log=self.event_log, repository=repository)
+        random_card_picker = DayPlanCardPicker(event_log=self.event_log, repository=repository)
 
         flip_card = random_card_picker.draw_card_from_plan(day_plan=day_plan)
 
