@@ -16,7 +16,7 @@ class DayPlanCardPicker:
     def draw_card_from_plan(self, day_plan: DayPlan) -> FlipCard:
         flip_card_side_id = self._select_random_flip_card_side_id(day_plan=day_plan)
         flip_card = self.repository.get_by_side_id(flip_card_side_id=flip_card_side_id)
-        flip_card = self._mark_drawn_side(flip_card, flip_card_side_id)
+        flip_card = self._mark_drawn_side(flip_card=flip_card, flip_card_side_id=flip_card_side_id)
         return flip_card
 
     @staticmethod
@@ -30,4 +30,4 @@ class DayPlanCardPicker:
 
     @staticmethod
     def _select_random_flip_card_side_id(day_plan: DayPlan):
-        return choice(tuple(day_plan.flip_card_side_ids))
+        return choice(tuple(day_plan.day_plan_set.value))

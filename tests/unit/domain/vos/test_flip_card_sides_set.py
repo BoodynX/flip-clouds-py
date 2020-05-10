@@ -9,7 +9,7 @@ class TestFlipCardSidesSet(TestCase):
         self.invalid_set_content = set('this should be a child of FlipCardSidesSet')
 
     def test_invalid_set_type__raise_exception(self):
-        self.assertRaises(self.FlipCardSidesSetExample.InvalidNewFlipCardsBufferValueType,
+        self.assertRaises(self.FlipCardSidesSetExample.InvalidFlipCardSidesValueType,
                           self.FlipCardSidesSetExample,
                           self.invalid_set_type)
 
@@ -22,5 +22,5 @@ class TestFlipCardSidesSet(TestCase):
         def _raise_exception(self):
             raise self.FlipCardSidesSetExampleException()
 
-        class FlipCardSidesSetExampleException(FlipCardSidesSet.InvalidNewFlipCardsBufferValueType):
+        class FlipCardSidesSetExampleException(FlipCardSidesSet.InvalidFlipCardSidesValueType):
             """pass"""

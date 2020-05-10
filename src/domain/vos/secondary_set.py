@@ -5,5 +5,5 @@ class SecondarySet(FlipCardSidesSet):
     def _raise_exception(self):
         raise self.InvalidSecondaryBufferValueType()
 
-    class InvalidSecondaryBufferValueType(FlipCardSidesSet.InvalidNewFlipCardsBufferValueType):
+    class InvalidSecondaryBufferValueType(FlipCardSidesSet.InvalidFlipCardSidesValueType):
         """pass"""

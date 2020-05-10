@@ -10,7 +10,7 @@ from src.domain.vos.card_side_state import CardSideState
 class NewCardPickerInterface(ABC):
     @abstractmethod
     def draw_new_card(self) -> FlipCard:
-        pass
+        """pass"""
 
 
 class NewCardPicker(NewCardPickerInterface):

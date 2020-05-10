@@ -7,6 +7,7 @@ from src.domain.factories.day_plan_factory_interface import DayPlanFactoryInterf
 from src.domain.services.day_planner import DayPlanner
 from src.domain.vos.day import Day
 from src.domain.vos.day_plan_id import DayPlanId
+from src.domain.vos.day_plan_set import DayPlanSet
 from src.domain.vos.flip_card_side_id import FlipCardSideId
 from tests.unit.application.factories.test_doubles.day_plan_factory_spy import DayPlanFactorySpy
 from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardNewStub
@@ -23,7 +24,7 @@ class TestDayPlanner(TestCase):
         self.number_of_days = NumberOfDaysStub()
         self.event_log = EventLog()
 
-    def test_add_first_flip_card_side_id_to_plan__x_number_of_days_from_today__flip_card_in_plan(self):
+    def test_add_first_flip_card_side_id_to_plan__x_number_of_days_from_today__flip_card_side_in_plan(self):
         empty_repository = EmptyDayPlanRepositorySpy()
         day_planner = DayPlanner(event_log=self.event_log, repository=empty_repository, factory=self.factory)
         flip_card_front_id = self.flip_card.front_id
@@ -35,7 +36,7 @@ class TestDayPlanner(TestCase):
         self._assert_day_plan_factory_called()
         self._assert_saved_to_repository(repository=empty_repository, flip_card_side_id=flip_card_front_id)
 
-    def test_add_another_flip_card_side_id_to_plan__x_number_of_days_from_today__flip_card_in_plan(self):
+    def test_add_another_flip_card_side_id_to_plan__x_number_of_days_from_today__flip_card_side_in_plan(self):
         repository = DayPlanRepositorySpy()
         day_planner = DayPlanner(event_log=self.event_log, repository=repository, factory=self.factory)
         flip_card_side_id = self.flip_card.back_id
@@ -48,14 +49,14 @@ class TestDayPlanner(TestCase):
         self._assert_flip_card_side_id_was_added_to_day_plan(flip_card_side_id, repository)
 
     def _assert_flip_card_side_id_was_added_to_day_plan(self, flip_card_side_id, repository):
-        day_plan = repository.call_stack[1][1]
-        self.assertIn(flip_card_side_id, day_plan.flip_card_side_ids)
+        day_plan: DayPlan = repository.call_stack[1][1]
+        self.assertIn(flip_card_side_id, day_plan.day_plan_set.value)
 
     def _assert_day_plan_factory_called(self):
         self.assertEqual(DayPlanFactorySpy.call_stack[0][0], DayPlanFactoryInterface.create_day_plan.__name__)
-        flip_card_ids = DayPlanFactorySpy.call_stack[0][1][0]
-        self.assertIsInstance(flip_card_ids, set)
-        self.assertSetEqual(flip_card_ids, {self.flip_card.front_id})
+        day_plan_set = DayPlanFactorySpy.call_stack[0][1][0]
+        self.assertIsInstance(day_plan_set, DayPlanSet)
+        self.assertSetEqual(day_plan_set.value, {self.flip_card.front_id})
         day = DayPlanFactorySpy.call_stack[0][1][1]
         self.assertIsInstance(day, Day)
         self._assert_day_is_number_of_days_greater_then_today(day=day)

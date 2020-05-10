@@ -8,7 +8,7 @@ from src.domain.vos.flip_card_side_id import FlipCardSideId
 class FlipCardSidesSet(ValueObject):
     def _validate_value(self, value: Set[FlipCardSideId]):
         if not isinstance(value, set):
-            raise self.InvalidNewFlipCardsBufferValueType()
+            raise self.InvalidFlipCardSidesValueType()
         for side_id in value:
             if not isinstance(side_id, FlipCardSideId):
                 self._raise_exception()
@@ -17,5 +17,5 @@ class FlipCardSidesSet(ValueObject):
     def _raise_exception(self):
         """pass"""
 
-    class InvalidNewFlipCardsBufferValueType(Exception):
+    class InvalidFlipCardSidesValueType(Exception):
         """pass"""

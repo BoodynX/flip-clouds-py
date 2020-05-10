@@ -2,17 +2,19 @@ from unittest.case import TestCase
 
 from src.application.factories.day_plan_factory import DayPlanFactory
 from src.domain.entities.day_plan import DayPlan
-from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardNewStub
+from src.domain.vos.day_plan_set import DayPlanSet
+from tests.unit.domain.vos.test_doubles.day_plan_set_stubs import DayPlanSetStub
 from tests.unit.domain.vos.test_doubles.day_stub import DayStub
 
 
 class TestDayPlanFactory(TestCase):
     def test_day_plan_creation__return_day_plan(self):
-        flip_card_side_ids = {FlipCardNewStub().front_id, FlipCardNewStub().back_id}
+        day_plan_set = DayPlanSetStub()
         day = DayStub()
 
-        day_plan = DayPlanFactory.create_day_plan(day=day, flip_card_side_ids=flip_card_side_ids)
+        day_plan = DayPlanFactory.create_day_plan(day=day, day_plan_set=day_plan_set)
 
         self.assertIsInstance(day_plan, DayPlan)
-        self.assertSetEqual(day_plan.flip_card_side_ids, flip_card_side_ids)
+        self.assertIsInstance(day_plan.day_plan_set, DayPlanSet)
+        self.assertSetEqual(day_plan.day_plan_set.value, day_plan_set.value)
         self.assertEqual(day, day_plan.day)

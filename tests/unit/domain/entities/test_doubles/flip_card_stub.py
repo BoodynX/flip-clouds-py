@@ -20,7 +20,7 @@ class FlipCardNewStub(FlipCard):
         self.back_state = CardSideStateNewStub()
 
     def get_drawn_side_id(self):
-        return None
+        """pass"""
 
 
 class FlipCardFrontPlannedStub(FlipCard):
@@ -34,7 +34,7 @@ class FlipCardFrontPlannedStub(FlipCard):
         self.back_state = CardSideStateNewStub()
 
     def get_drawn_side_id(self):
-        return None
+        """pass"""
 
 
 class FlipCardBackPlannedStub(FlipCard):
@@ -49,7 +49,7 @@ class FlipCardBackPlannedStub(FlipCard):
         self.back_state = CardSideStatePlannedStub()
 
     def get_drawn_side_id(self):
-        return None
+        """pass"""
 
 
 class FlipCardFrontDrawnStub(FlipCard):
@@ -79,4 +79,4 @@ class FlipCardBackDrawnStub(FlipCard):
         self.back_state = CardSideStateDrawnStub()
 
     def get_drawn_side_id(self):
-        return self.back_idck
+        return self.back_id
