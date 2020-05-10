@@ -2,14 +2,14 @@ from abc import abstractmethod, ABC
 from random import choice
 
 from src.domain.entities.flip_card import FlipCard
-from src.domain.event_log import EventLog
+from src.domain.services.event_log.event_log import EventLog
 from src.domain.repositories.flip_card_repository_interface import FlipCardRepositoryInterface
 from src.domain.vos.card_side_state import CardSideState
 
 
 class NewCardPickerInterface(ABC):
     @abstractmethod
-    def draw_new_card(self):
+    def draw_new_card(self) -> FlipCard:
         pass
 
 

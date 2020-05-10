@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from unittest import TestCase
 
 from src.domain.entities.day_plan import DayPlan
-from src.domain.event_log import EventLog
+from src.domain.services.event_log.event_log import EventLog
 from src.domain.factories.day_plan_factory_interface import DayPlanFactoryInterface
 from src.domain.services.day_planner import DayPlanner
 from src.domain.vos.day import Day

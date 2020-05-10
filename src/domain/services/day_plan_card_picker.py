@@ -2,7 +2,7 @@ from random import choice
 
 from src.domain.entities.day_plan import DayPlan
 from src.domain.entities.flip_card import FlipCard
-from src.domain.event_log import EventLog
+from src.domain.services.event_log.event_log import EventLog
 from src.domain.repositories.flip_card_repository_interface import FlipCardRepositoryInterface
 from src.domain.vos.card_side_state import CardSideState
 from src.domain.vos.flip_card_side_id import FlipCardSideIdFront, FlipCardSideId

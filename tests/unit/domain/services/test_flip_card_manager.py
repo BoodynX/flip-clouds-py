@@ -3,7 +3,7 @@ from unittest import TestCase
 from src.domain.events.new_card_created import NewCardCreated
 from src.domain.services.flip_card_manager import FlipCardManager
 from tests.unit.application.factories.test_doubles.flip_card_factory_spy import FlipCardFactorySpy
-from tests.unit.domain.event_log_spy import EventLogSpy
+from tests.unit.domain.services.event_log.test_doubles.event_log_spy import EventLogSpy
 from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceBackStub, SentenceFrontStub
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import FlipCardsRepositorySpy
 
@@ -25,5 +25,5 @@ class TestFlipCardManager(TestCase):
                               (factory.create_card.__name__, (sentence_front, sentence_back)))
         self.assertTupleEqual(repository.call_stack[0],
                               (repository.save.__name__, FlipCardFactorySpy.flip_card_stub))
-        self.assertEqual(self.event_log.call_stack[0][0], self.event_log.register.__name__)
+        self.assertEqual(self.event_log.call_stack[0][0], self.event_log.fire.__name__)
         self.assertIsInstance(self.event_log.call_stack[0][1], NewCardCreated)

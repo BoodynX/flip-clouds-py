@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from typing import Type
 
-from src.domain.event_log import EventLog
+from src.domain.services.event_log.event_log import EventLog
 from src.domain.factories.day_plan_factory_interface import DayPlanFactoryInterface
 from src.domain.repositories.day_plan_repository_interface import DayPlanRepositoryInterface
 from src.domain.vos.day import Day

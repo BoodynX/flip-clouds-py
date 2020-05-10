@@ -13,3 +13,10 @@ class CardSideStatePlannedStub(CardSideState):
 
     def __init__(self):
         """pass"""
+
+
+class CardSideStateDrawnStub(CardSideState):
+    value = CardSideState.StateType(CardSideState.StateType.DRAWN)
+
+    def __init__(self):
+        """pass"""

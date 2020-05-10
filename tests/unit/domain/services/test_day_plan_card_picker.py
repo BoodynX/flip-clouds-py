@@ -5,12 +5,12 @@ from src.domain.services.day_plan_card_picker import DayPlanCardPicker
 from src.domain.vos.card_side_state import CardSideState
 from tests.unit.domain.entities.test_doubles.day_plan_stub import DayPlanFrontSidesStub, \
     DayPlanBackSidesStub
-from tests.unit.domain.event_log_spy import EventLogSpy
+from tests.unit.domain.services.event_log.test_doubles.event_log_spy import EventLogSpy
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import \
     FlipCardsRepositoryFrontPlannedCardSpy, FlipCardsRepositoryBackPlannedCardSpy
 
 
-class TestDayPlanRandomCardPicker(TestCase):
+class TestDayPlanCardPicker(TestCase):
     def setUp(self):
         self.event_log = EventLogSpy()
 

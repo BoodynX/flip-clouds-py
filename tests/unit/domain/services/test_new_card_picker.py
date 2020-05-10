@@ -3,12 +3,12 @@ from unittest import TestCase
 from src.domain.entities.flip_card import FlipCard
 from src.domain.services.new_card_picker import NewCardPicker
 from src.domain.vos.card_side_state import CardSideState
-from tests.unit.domain.event_log_spy import EventLogSpy
+from tests.unit.domain.services.event_log.test_doubles.event_log_spy import EventLogSpy
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import \
     FlipCardsRepositoryNewCardSpy, FlipCardsRepositoryFrontPlannedCardSpy, FlipCardsRepositoryBackPlannedCardSpy
 
 
-class TestNewRandomCardPicker(TestCase):
+class TestNewCardPicker(TestCase):
     def setUp(self):
         self.event_log = EventLogSpy()
 
