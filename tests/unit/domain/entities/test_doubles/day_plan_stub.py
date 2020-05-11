@@ -1,5 +1,5 @@
 from src.domain.entities.day_plan import DayPlan
-from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardNewStub
+from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardStubNew
 from tests.unit.domain.vos.test_doubles.day_plan_id_stub import DayPlanIdStub
 from tests.unit.domain.vos.test_doubles.day_plan_set_stubs import DayPlanSetStub, DayPlanSetFrontSidesStub, \
     DayPlanSetBackSidesStub

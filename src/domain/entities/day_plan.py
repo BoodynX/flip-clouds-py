@@ -11,7 +11,7 @@ class DayPlan(Entity):
         self.day_plan_set = day_plan_set
         self.day = day
 
-    def add_to_day_plan(self, flip_card_side_id: FlipCardSideId):
+    def add_to_day_plan(self, side_id: FlipCardSideId):
         appended_day_plan_set: set = self.day_plan_set.value
-        appended_day_plan_set.add(flip_card_side_id)
+        appended_day_plan_set.add(side_id)
         self.day_plan_set = DayPlanSet(appended_day_plan_set)

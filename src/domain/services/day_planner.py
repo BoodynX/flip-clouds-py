@@ -19,18 +19,16 @@ class DayPlanner:
         self.repository = repository
         self.factory = factory
 
-    def add_flip_card_side_id_to_day_plan(self, flip_card_side_id: FlipCardSideId, days: NumberOfDays):
+    def add_flip_card_side_id_to_day_plan(self, side_id: FlipCardSideId, days: NumberOfDays):
         day = self._calculate_date_of_next_appearance(days_to_next_appearance=days)
         day_plan: DayPlan = self.repository.get(day=day)
 
         if not day_plan:
-            day_plan = self.factory.create_day_plan(day_plan_set=DayPlanSet({flip_card_side_id}), day=day)
+            day_plan = self.factory.create_day_plan(day_plan_set=DayPlanSet({side_id}), day=day)
         else:
-            day_plan.add_to_day_plan(flip_card_side_id=flip_card_side_id)
+            day_plan.add_to_day_plan(side_id=side_id)
 
-        #  TODO REMEMBER TO SET SITES *_planned_day VALUE !!!
-
-        self.repository.save(day_plan=day_plan)
+        self.repository.purge_side_id_from_all_plans_and_save_plan(side_id_to_purge=side_id, day_plan=day_plan)
 
     @staticmethod
     def _calculate_date_of_next_appearance(days_to_next_appearance):
