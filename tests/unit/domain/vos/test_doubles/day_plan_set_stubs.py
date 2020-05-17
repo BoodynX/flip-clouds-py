@@ -1,5 +1,5 @@
 from src.domain.vos.day_plan_set import DayPlanSet
-from tests.unit.domain.vos.test_doubles.flip_card_side_id_test_doubles import FlipCardSideIdFrontStub, \
+from tests.unit.domain.vos.test_doubles.flip_card_side_id_stubs import FlipCardSideIdFrontStub, \
     FlipCardSideIdBackStub
 
 

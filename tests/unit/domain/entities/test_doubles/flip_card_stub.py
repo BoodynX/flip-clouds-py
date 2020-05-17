@@ -5,16 +5,16 @@ from src.domain.vos.flip_card_side_id import FlipCardSideIdFront, FlipCardSideId
 from tests.unit.domain.vos.test_doubles.card_side_state_stub import CardSideStateStubNew, CardSideStateStubPlanned, \
     CardSideStateStubDrawn
 from tests.unit.domain.vos.test_doubles.flip_card_id_stub import FlipCardIdStub
-from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceBackStub, SentenceFrontStub
+from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceStubBack, SentenceStubFront
 
 
 class FlipCardStubNew(FlipCard):
 
     def __init__(self):
         self.id_ = FlipCardIdStub()
-        self.front = SentenceFrontStub()
+        self.front = SentenceStubFront()
         self.front_id = FlipCardSideIdFront(uuid4())
-        self.back = SentenceBackStub()
+        self.back = SentenceStubBack()
         self.back_id = FlipCardSideIdBack(uuid4())
         self.front_state = CardSideStateStubNew()
         self.back_state = CardSideStateStubNew()
@@ -26,9 +26,9 @@ class FlipCardStubNew(FlipCard):
 class FlipCardStubFrontPlanned(FlipCard):
     def __init__(self):
         self.id_ = FlipCardIdStub()
-        self.front = SentenceFrontStub()
+        self.front = SentenceStubFront()
         self.front_id = FlipCardSideIdFront(uuid4())
-        self.back = SentenceBackStub()
+        self.back = SentenceStubBack()
         self.back_id = FlipCardSideIdBack(uuid4())
         self.front_state = CardSideStateStubPlanned()
         self.back_state = CardSideStateStubNew()
@@ -41,9 +41,9 @@ class FlipCardStubBackPlanned(FlipCard):
 
     def __init__(self):
         self.id_ = FlipCardIdStub()
-        self.front = SentenceFrontStub()
+        self.front = SentenceStubFront()
         self.front_id = FlipCardSideIdFront(uuid4())
-        self.back = SentenceBackStub()
+        self.back = SentenceStubBack()
         self.back_id = FlipCardSideIdBack(uuid4())
         self.front_state = CardSideStateStubNew()
         self.back_state = CardSideStateStubPlanned()
@@ -56,9 +56,9 @@ class FlipCardStubFrontDrawn(FlipCard):
 
     def __init__(self):
         self.id_ = FlipCardIdStub()
-        self.front = SentenceFrontStub()
+        self.front = SentenceStubFront()
         self.front_id = FlipCardSideIdFront(uuid4())
-        self.back = SentenceBackStub()
+        self.back = SentenceStubBack()
         self.back_id = FlipCardSideIdBack(uuid4())
         self.front_state = CardSideStateStubDrawn()
         self.back_state = CardSideStateStubNew()
@@ -71,9 +71,9 @@ class FlipCardStubBackDrawn(FlipCard):
 
     def __init__(self):
         self.id_ = FlipCardIdStub()
-        self.front = SentenceFrontStub()
+        self.front = SentenceStubFront()
         self.front_id = FlipCardSideIdFront(uuid4())
-        self.back = SentenceBackStub()
+        self.back = SentenceStubBack()
         self.back_id = FlipCardSideIdBack(uuid4())
         self.front_state = CardSideStateStubNew()
         self.back_state = CardSideStateStubDrawn()

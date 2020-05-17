@@ -3,7 +3,7 @@ from src.domain.vos.abstractions.flip_cards_sides_set import FlipCardSidesSet
 
 class SecondarySet(FlipCardSidesSet):
     def _raise_exception(self):
-        raise self.InvalidSecondaryBufferValueType()
+        raise self.InvalidSecondaryBoxValueType()
 
-    class InvalidSecondaryBufferValueType(FlipCardSidesSet.InvalidFlipCardSidesValueType):
+    class InvalidSecondaryBoxValueType(FlipCardSidesSet.InvalidFlipCardSidesValueType):
         """pass"""

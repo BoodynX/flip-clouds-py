@@ -13,17 +13,17 @@
 #
 #
 #
-# class NewFlipCardBufferInterface(ABC):
+# class NewFlipCardBoxInterface(ABC):
 #     @abstractmethod
 #     def append(self, flip_card: FlipCard):
 #         """
 #         Append the whole card to check what is going on with the other side.
-#         If it's new you need to add it to the secondary _buffer,
+#         If it's new you need to add it to the secondary _box,
 #         so that it gets drawn later.
 #         """
 #
 #
-# class NewFlipCardBufferSpy(NewFlipCardBufferInterface):
+# class NewFlipCardBoxSpy(NewFlipCardBoxInterface):
 #     def __init__(self):
 #         self.call_stack = []
 #
@@ -57,10 +57,10 @@
 #
 # class StudySession:
 #     def __init__(self, event_log: EventLog,
-#                  container: NewFlipCardBufferInterface,
+#                  container: NewFlipCardBoxInterface,
 #                  new_card_picker: NewCardPickerInterface):
 #         self.event_log = event_log
-#         self._buffer = container
+#         self._box = container
 #         self.new_card_picker = new_card_picker
 #
 #     def draw_new_card(self) -> FlipCard:
@@ -69,7 +69,7 @@
 #     # def submit_answer(self, answer: Answer, flip_card: FlipCard):
 #     #     flip_card
 #     #     if answer:
-#     #         self._buffer.append(flip_card=flip_card)
+#     #         self._box.append(flip_card=flip_card)
 #     #         self.event_log.fire(event=AnswerChecked(False))
 #
 #
@@ -81,9 +81,9 @@
 # class TestStudySessionNewCards(TestCase):
 #     def setUp(self):
 #         self.event_log = EventLogSpy()
-#         self.new_flip_card_buffer = NewFlipCardBufferSpy()
+#         self.new_flip_card_box = NewFlipCardBoxSpy()
 #         self.new_card_picker = NewCardPickerStub()
-#         self.study_session = StudySession(self.event_log, self.new_flip_card_buffer, self.new_card_picker)
+#         self.study_session = StudySession(self.event_log, self.new_flip_card_box, self.new_card_picker)
 #         self.flip_card = FlipCardStubNew()
 #         self.answer = AnswerDummy()
 #
@@ -92,13 +92,13 @@
 #
 #         self.assertIsInstance(flip_card, FlipCard)
 #
-#     def test_user_submits_wrong_answer__put_card_in_new_cards_buffer__fire_event(self):
+#     def test_user_submits_wrong_answer__put_card_in_new_cards_box__fire_event(self):
 #         self.flip_card.front_state = CardSideState(CardSideState.StateType.DRAWN)
 #
 #         # self.study_session.submit_answer(answer=self.answer, flip_card=self.flip_card)
 #
 #     #     self._assert_answer_got_submitted_for_verification()
-#     #     self._assert_card_got_put_in_buffer()
+#     #     self._assert_card_got_put_in_box()
 #     #     self._assert_event_fired__answer_checked__wrong_answer()
 #     #
 #     # def _assert_answer_got_submitted_for_verification(self):
@@ -107,9 +107,9 @@
 #     #
 #     #     self.assertTupleEqual(call_stack[0], (called_method, self.answer))
 #     #
-#     # def _assert_card_got_put_in_buffer(self):
-#     #     call_stack = self.study_session._buffer.call_stack
-#     #     called_method = NewFlipCardBufferInterface.append.__name__
+#     # def _assert_card_got_put_in_box(self):
+#     #     call_stack = self.study_session._box.call_stack
+#     #     called_method = NewFlipCardBoxInterface.append.__name__
 #     #
 #     #     self.assertTupleEqual(call_stack[0], (called_method, self.flip_card))
 #     #

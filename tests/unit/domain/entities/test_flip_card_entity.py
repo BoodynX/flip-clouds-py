@@ -5,16 +5,16 @@ from src.domain.entities.flip_card import FlipCard
 from src.domain.vos.flip_card_side_id import FlipCardSideIdFront, FlipCardSideIdBack
 from tests.unit.domain.vos.test_doubles.card_side_state_stub import CardSideStateStubNew, CardSideStateStubDrawn
 from tests.unit.domain.vos.test_doubles.flip_card_id_stub import FlipCardIdStub
-from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceFrontStub, SentenceBackStub
+from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceStubFront, SentenceStubBack
 
 
 class TestFlipCardEntity(TestCase):
     def test_get_drawn_side_id__front_drawn__return_front_id(self):
         flip_card = FlipCard(
             id_=FlipCardIdStub(),
-            front=SentenceFrontStub(),
+            front=SentenceStubFront(),
             front_id=FlipCardSideIdFront(uuid4()),
-            back=SentenceBackStub(),
+            back=SentenceStubBack(),
             back_id=FlipCardSideIdBack(uuid4()),
             front_state=CardSideStateStubDrawn(),
             back_state=CardSideStateStubNew()
@@ -27,9 +27,9 @@ class TestFlipCardEntity(TestCase):
     def test_get_drawn_side_id__back_drawn__return_front_id(self):
         flip_card = FlipCard(
             id_=FlipCardIdStub(),
-            front=SentenceFrontStub(),
+            front=SentenceStubFront(),
             front_id=FlipCardSideIdFront(uuid4()),
-            back=SentenceBackStub(),
+            back=SentenceStubBack(),
             back_id=FlipCardSideIdBack(uuid4()),
             front_state=CardSideStateStubNew(),
             back_state=CardSideStateStubDrawn()
@@ -42,9 +42,9 @@ class TestFlipCardEntity(TestCase):
     def test_get_drawn_side_id__not_drawn__return_none(self):
         flip_card = FlipCard(
             id_=FlipCardIdStub(),
-            front=SentenceFrontStub(),
+            front=SentenceStubFront(),
             front_id=FlipCardSideIdFront(uuid4()),
-            back=SentenceBackStub(),
+            back=SentenceStubBack(),
             back_id=FlipCardSideIdBack(uuid4()),
             front_state=CardSideStateStubNew(),
             back_state=CardSideStateStubNew()
@@ -59,9 +59,9 @@ class TestFlipCardEntity(TestCase):
         side_id_back = FlipCardSideIdBack(uuid4())
         flip_card = FlipCard(
             id_=FlipCardIdStub(),
-            front=SentenceFrontStub(),
+            front=SentenceStubFront(),
             front_id=side_id_front,
-            back=SentenceBackStub(),
+            back=SentenceStubBack(),
             back_id=side_id_back,
             front_state=CardSideStateStubNew(),
             back_state=CardSideStateStubNew()

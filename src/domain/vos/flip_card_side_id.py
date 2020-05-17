@@ -3,12 +3,14 @@ from abc import ABC, abstractmethod
 from src.domain.vos.abstractions.uuid_value_object import UuidValueObject
 
 
-class FlipCardSideId(UuidValueObject, ABC):
+class FlipCardSideId(UuidValueObject):
     def _raise_exception(self):
         self._raise_specific_flip_card_side_id_exception()
 
-    @abstractmethod
     def _raise_specific_flip_card_side_id_exception(self):
+        raise self.InvalidFlipCardSideId()
+
+    class InvalidFlipCardSideId(Exception):
         """pass"""
 
 

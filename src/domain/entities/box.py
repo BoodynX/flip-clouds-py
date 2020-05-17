@@ -6,7 +6,7 @@ from src.domain.vos.primary_set import PrimarySet
 from src.domain.vos.secondary_set import SecondarySet
 
 
-class BufferInterface(Entity, ABC):
+class BoxInterface(Entity, ABC):
     @abstractmethod
     def add_to_primary(self, flip_card_side_id: FlipCardSideId):
         """pass"""
@@ -16,7 +16,7 @@ class BufferInterface(Entity, ABC):
         """pass"""
 
 
-class Buffer(BufferInterface):
+class Box(BoxInterface):
     def __init__(self, primary_set: PrimarySet, secondary_set: SecondarySet):
         self._primary_set = primary_set
         self._secondary_set = secondary_set
