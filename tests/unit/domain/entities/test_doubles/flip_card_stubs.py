@@ -56,15 +56,3 @@ class FlipCard_StubFrontDrawnBackNew(FlipCard):
             back=cls._back,
         )
 
-
-class FlipCard_StubFrontNewBackDrawn(FlipCard):
-    id_ = FlipCardId_Stub()
-    _front = FlipCardSide_StubFrontNew()
-    _back = FlipCardSide_StubBackDrawn()
-
-    def __new__(cls, *args, **kwargs):
-        return FlipCard(
-            id_=cls.id_,
-            front=cls._front,
-            back=cls._back,
-        )

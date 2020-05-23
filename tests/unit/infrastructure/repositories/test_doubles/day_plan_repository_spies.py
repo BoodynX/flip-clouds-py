@@ -16,12 +16,6 @@ class DayPlanRepository_SpyAbstraction(DayPlanRepositoryInterface, ABC):
         self.call_stack.append((self.purge_side_id_from_all_plans_and_save_plan.__name__, side_id_to_purge, day_plan))
 
 
-class DayPlanRepository_SpyMixedSides(DayPlanRepository_SpyAbstraction):
-    def get(self, day: Day) -> DayPlan:
-        self.call_stack.append((self.get.__name__, day))
-        return DayPlan_StubMixedSides()
-
-
 class DayPlanRepository_SpyFrontSides(DayPlanRepository_SpyAbstraction):
     def get(self, day: Day) -> DayPlan:
         self.call_stack.append((self.get.__name__, day))

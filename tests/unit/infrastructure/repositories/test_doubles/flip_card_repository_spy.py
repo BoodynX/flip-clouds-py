@@ -20,14 +20,14 @@ class FlipCardsRepository_Spy(FlipCardRepositoryInterface):
         """pass"""
 
 
-class FlipCardsRepository_SpyAllNewCard(FlipCardsRepository_Spy):
+class FlipCardsRepository_SpyOnlyDrawAllNewCard(FlipCardsRepository_Spy):
 
     def draw_random_new_card(self) -> FlipCard:
         self.call_stack.append((self.draw_random_new_card.__name__,))
         return FlipCard_StubAllNew()
 
     def get_by_side_id(self, flip_card_side_id: FlipCardSideId) -> FlipCard:
-        return FlipCard_StubAllNew()
+        """pass"""
 
 
 class FlipCardsRepository_SpyFrontPlannedBackNew(FlipCardsRepository_Spy):

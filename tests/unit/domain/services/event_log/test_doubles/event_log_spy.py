@@ -13,4 +13,4 @@ class EventLog_Spy(EventLog):
         self.call_stack.append((self.fire.__name__, event))
 
     def subscribe(self, listener: ListenerInterface, event_type: Type[Event]):
-        self.call_stack.append((self.subscribe.__name__, event_type))
+        """pass"""
