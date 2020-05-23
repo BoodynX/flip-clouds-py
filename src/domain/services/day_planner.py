@@ -6,7 +6,7 @@ from src.domain.services.event_log.event_log import EventLog
 from src.domain.factories.day_plan_factory_interface import DayPlanFactoryInterface
 from src.domain.repositories.day_plan_repository_interface import DayPlanRepositoryInterface
 from src.domain.vos.day import Day
-from src.domain.vos.day_plan_set import DayPlanSet
+from src.domain.vos.unique_flip_card_sides_container import UniqueFlipCardSidesContainer
 from src.domain.vos.flip_card_side_id import FlipCardSideId
 from src.domain.vos.number_of_days import NumberOfDays
 
@@ -24,7 +24,7 @@ class DayPlanner:
         day_plan: DayPlan = self.repository.get(day=day)
 
         if not day_plan:
-            day_plan = self.factory.create_day_plan(day_plan_set=DayPlanSet({side_id}), day=day)
+            day_plan = self.factory.create_day_plan(unique_flip_card_sides_container=UniqueFlipCardSidesContainer({side_id}), day=day)
         else:
             day_plan.add_to_day_plan(side_id=side_id)
 

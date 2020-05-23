@@ -1,9 +1,9 @@
-from src.domain.vos.abstractions.flip_cards_sides_set import FlipCardSidesSet
+from src.domain.vos.unique_flip_card_sides_container import UniqueFlipCardSidesContainer
 
 
-class SecondarySet(FlipCardSidesSet):
+class SecondarySet(UniqueFlipCardSidesContainer):
     def _raise_exception(self):
         raise self.InvalidSecondaryBoxValueType()
 
-    class InvalidSecondaryBoxValueType(FlipCardSidesSet.InvalidFlipCardSidesValueType):
+    class InvalidSecondaryBoxValueType(UniqueFlipCardSidesContainer.InvalidUniqueFlipCardSidesContainerValueType):
         """pass"""

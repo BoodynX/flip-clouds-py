@@ -1,9 +1,8 @@
-from src.domain.vos.abstractions.flip_cards_sides_set import FlipCardSidesSet
+from src.domain.vos.unique_flip_card_sides_container import UniqueFlipCardSidesContainer
 
 
-class DayPlanSet(FlipCardSidesSet):
-    def _raise_exception(self):
-        raise self.InvalidDayPlanSetValueType()
+# TODO this needs to be an abstract Entity, inherited by DayPlan and the SubBoxes
+#  and will be responsible for making sure there are no duplicated VOs in the set
 
-    class InvalidDayPlanSetValueType(FlipCardSidesSet.InvalidFlipCardSidesValueType):
-        """pass"""
+class UniqueFlipCardSidesContainer(UniqueFlipCardSidesContainer):
+    pass
