@@ -18,9 +18,9 @@ class TestDayPlanCardPicker(TestCase):
     def test_drawing_front_side_id_from_day_plan__return_flip_card(self):
         day_plan = DayPlanFrontSidesStub()
         repository = FlipCardsRepositoryFrontPlannedCardSpy()
-        random_card_picker = DayPlanCardPicker(event_log=self.event_log, repository=repository)
+        card_picker = DayPlanCardPicker(event_log=self.event_log, repository=repository)
 
-        flip_card = random_card_picker.draw_card_from_plan(day_plan=day_plan)
+        flip_card = card_picker.draw_card_from_plan(day_plan=day_plan)
 
         self._assert_flip_cards_front_side_was_marked_as_drawn(flip_card)
         self._assert_repository_called_with_side_id_from_day_plan(day_plan=day_plan, repository=repository)
@@ -28,9 +28,9 @@ class TestDayPlanCardPicker(TestCase):
     def test_drawing_back_side_id_from_day_plan__return_flip_card(self):
         day_plan = DayPlanBackSidesStub()
         repository = FlipCardsRepositoryBackPlannedCardSpy()
-        random_card_picker = DayPlanCardPicker(event_log=self.event_log, repository=repository)
+        card_picker = DayPlanCardPicker(event_log=self.event_log, repository=repository)
 
-        flip_card = random_card_picker.draw_card_from_plan(day_plan=day_plan)
+        flip_card = card_picker.draw_card_from_plan(day_plan=day_plan)
 
         self._assert_flip_cards_back_side_was_marked_as_drawn(flip_card=flip_card)
         self._assert_repository_called_with_side_id_from_day_plan(day_plan=day_plan, repository=repository)

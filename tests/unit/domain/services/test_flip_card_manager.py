@@ -4,7 +4,7 @@ from src.domain.events.new_card_created import NewCardCreated
 from src.domain.services.flip_card_manager import FlipCardManager
 from tests.unit.application.factories.test_doubles.flip_card_factory_spy import FlipCardFactorySpy
 from tests.unit.domain.services.event_log.test_doubles.event_log_spy import EventLogSpy
-from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceStubBack, SentenceStubFront
+from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceStubPolish, SentenceStubEnglish
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import FlipCardsRepositorySpy
 
 
@@ -13,8 +13,8 @@ class TestFlipCardManager(TestCase):
         self.event_log = EventLogSpy()
 
     def test_adding_flip_card__emit_added_card_event(self):
-        sentence_front = SentenceStubFront()
-        sentence_back = SentenceStubBack()
+        sentence_front = SentenceStubEnglish()
+        sentence_back = SentenceStubPolish()
         factory = FlipCardFactorySpy.get_fresh_spy()
         repository = FlipCardsRepositorySpy()
         flip_card_manager = FlipCardManager(event_log=self.event_log, repository=repository)

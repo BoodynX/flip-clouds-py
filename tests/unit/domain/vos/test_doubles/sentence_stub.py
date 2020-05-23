@@ -1,15 +1,15 @@
 from src.domain.vos.sentence import Sentence
 
 
-class SentenceStubBack(Sentence):
-    value = 'back sentence'
+class SentenceStubPolish(Sentence):
+    value = 'Przykładowe zdanie'
 
     def __init__(self):
         pass
 
 
-class SentenceStubFront(Sentence):
-    value = 'front sentence'
+class SentenceStubEnglish(Sentence):
+    value = 'Example Sentence'
 
     def __init__(self):
         pass

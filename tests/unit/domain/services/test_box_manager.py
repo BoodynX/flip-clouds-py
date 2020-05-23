@@ -47,12 +47,12 @@ class BoxManager:
         self._repository = repository
 
     def add_card(self, flip_card: FlipCard):
-        drawn_side_id = flip_card.get_drawn_side_id()
+        drawn_side_id = flip_card.get_drawn_side()
 
         if not drawn_side_id:
             raise self.SubmittedCardWasNotDrawn()
 
-        opposite_side = flip_card.get_opposite_side_id_to(side_id=drawn_side_id)
+        opposite_side = flip_card.get_opposite_side_to(side=drawn_side_id)
 
         box = self._repository.get_box_state()
         box.add_to_primary(flip_card_side_id=drawn_side_id)
@@ -114,7 +114,7 @@ class TestNewCardsBoxManager(TestCase):
         submitted_value = box_stack[1][1]
 
         self.assertEqual(called_method, expected_method_call)
-        self.assertEqual(submitted_value, self.flip_card.back_id)
+        self.assertEqual(submitted_value, self.flip_card.back.id_)
 
     def _assert_box_state_fetched(self):
         called_method = self.box_repository.call_stack[0][0]

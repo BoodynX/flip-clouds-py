@@ -1,82 +1,70 @@
-from uuid import uuid4
-
 from src.domain.entities.flip_card import FlipCard
-from src.domain.vos.flip_card_side_id import FlipCardSideIdFront, FlipCardSideIdBack
-from tests.unit.domain.vos.test_doubles.card_side_state_stub import CardSideStateStubNew, CardSideStateStubPlanned, \
-    CardSideStateStubDrawn
+from tests.unit.domain.entities.test_doubles.flip_card_side_stubs import FlipCardSideStubNewPolish, \
+    FlipCardSideStubNewEnglish, FlipCardSideStubPlannedPolish, FlipCardSideStubPlannedEnglish, \
+    FlipCardSideStubDrawnPolish, FlipCardSideStubDrawnEnglish
 from tests.unit.domain.vos.test_doubles.flip_card_id_stub import FlipCardIdStub
-from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceStubBack, SentenceStubFront
 
 
 class FlipCardStubNew(FlipCard):
+    id_ = FlipCardIdStub()
+    _front = FlipCardSideStubNewPolish()
+    _back = FlipCardSideStubNewEnglish()
 
-    def __init__(self):
-        self.id_ = FlipCardIdStub()
-        self.front = SentenceStubFront()
-        self.front_id = FlipCardSideIdFront(uuid4())
-        self.back = SentenceStubBack()
-        self.back_id = FlipCardSideIdBack(uuid4())
-        self.front_state = CardSideStateStubNew()
-        self.back_state = CardSideStateStubNew()
-
-    def get_drawn_side_id(self):
-        """pass"""
+    def __new__(cls, *args, **kwargs):
+        return FlipCard(
+            id_=cls.id_,
+            front=cls._front,
+            back=cls._back,
+        )
 
 
 class FlipCardStubFrontPlanned(FlipCard):
-    def __init__(self):
-        self.id_ = FlipCardIdStub()
-        self.front = SentenceStubFront()
-        self.front_id = FlipCardSideIdFront(uuid4())
-        self.back = SentenceStubBack()
-        self.back_id = FlipCardSideIdBack(uuid4())
-        self.front_state = CardSideStateStubPlanned()
-        self.back_state = CardSideStateStubNew()
+    id_ = FlipCardIdStub()
+    _front = FlipCardSideStubPlannedPolish()
+    _back = FlipCardSideStubNewEnglish()
 
-    def get_drawn_side_id(self):
-        """pass"""
+    def __new__(cls, *args, **kwargs):
+        return FlipCard(
+            id_=cls.id_,
+            front=cls._front,
+            back=cls._back,
+        )
 
 
 class FlipCardStubBackPlanned(FlipCard):
+    id_ = FlipCardIdStub()
+    _front = FlipCardSideStubNewPolish()
+    _back = FlipCardSideStubPlannedEnglish()
 
-    def __init__(self):
-        self.id_ = FlipCardIdStub()
-        self.front = SentenceStubFront()
-        self.front_id = FlipCardSideIdFront(uuid4())
-        self.back = SentenceStubBack()
-        self.back_id = FlipCardSideIdBack(uuid4())
-        self.front_state = CardSideStateStubNew()
-        self.back_state = CardSideStateStubPlanned()
-
-    def get_drawn_side_id(self):
-        """pass"""
+    def __new__(cls, *args, **kwargs):
+        return FlipCard(
+            id_=cls.id_,
+            front=cls._front,
+            back=cls._back,
+        )
 
 
 class FlipCardStubFrontDrawn(FlipCard):
+    id_ = FlipCardIdStub()
+    _front = FlipCardSideStubDrawnPolish()
+    _back = FlipCardSideStubNewEnglish()
 
-    def __init__(self):
-        self.id_ = FlipCardIdStub()
-        self.front = SentenceStubFront()
-        self.front_id = FlipCardSideIdFront(uuid4())
-        self.back = SentenceStubBack()
-        self.back_id = FlipCardSideIdBack(uuid4())
-        self.front_state = CardSideStateStubDrawn()
-        self.back_state = CardSideStateStubNew()
-
-    def get_drawn_side_id(self):
-        return self.front_id
+    def __new__(cls, *args, **kwargs):
+        return FlipCard(
+            id_=cls.id_,
+            front=cls._front,
+            back=cls._back,
+        )
 
 
 class FlipCardStubBackDrawn(FlipCard):
+    id_ = FlipCardIdStub()
+    _front = FlipCardSideStubNewPolish()
+    _back = FlipCardSideStubDrawnEnglish()
 
-    def __init__(self):
-        self.id_ = FlipCardIdStub()
-        self.front = SentenceStubFront()
-        self.front_id = FlipCardSideIdFront(uuid4())
-        self.back = SentenceStubBack()
-        self.back_id = FlipCardSideIdBack(uuid4())
-        self.front_state = CardSideStateStubNew()
-        self.back_state = CardSideStateStubDrawn()
-
-    def get_drawn_side_id(self):
-        return self.back_id
+    def __new__(cls, *args, **kwargs):
+        return FlipCard(
+            id_=cls.id_,
+            front=cls._front,
+            back=cls._back,
+        )

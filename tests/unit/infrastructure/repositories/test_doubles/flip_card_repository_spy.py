@@ -49,4 +49,4 @@ class FlipCardsRepositoryBackPlannedCardSpy(FlipCardsRepositorySpy):
 
     def get_by_side_id(self, flip_card_side_id: FlipCardSideId) -> FlipCard:
         self.call_stack.append((self.get_by_side_id.__name__, flip_card_side_id))
-        return FlipCardStubFrontPlanned()
+        return FlipCardStubBackPlanned()

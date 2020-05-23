@@ -5,7 +5,7 @@ from src.domain.entities.flip_card import FlipCard
 from src.domain.services.event_log.event_log import EventLog
 from src.domain.repositories.flip_card_repository_interface import FlipCardRepositoryInterface
 from src.domain.vos.card_side_state import CardSideState
-from src.domain.vos.flip_card_side_id import FlipCardSideIdFront, FlipCardSideId
+from src.domain.vos.flip_card_side_id import FlipCardSideId
 
 
 class DayPlanCardPicker:
@@ -19,15 +19,19 @@ class DayPlanCardPicker:
         flip_card = self._mark_drawn_side(flip_card=flip_card, flip_card_side_id=flip_card_side_id)
         return flip_card
 
-    @staticmethod
-    def _mark_drawn_side(flip_card: FlipCard, flip_card_side_id: FlipCardSideId) -> FlipCard:
+    def _mark_drawn_side(self, flip_card: FlipCard, flip_card_side_id: FlipCardSideId) -> FlipCard:
         drawn = CardSideState(CardSideState.StateType.DRAWN)
-        if isinstance(flip_card_side_id, FlipCardSideIdFront):
+        if flip_card.front_id.value == flip_card_side_id.value:
             flip_card.front_state = drawn
-        else:
+        elif flip_card.back_id.value == flip_card_side_id.value:
             flip_card.back_state = drawn
+        else:
+            raise self.SideIdDoesNotBelongToCard()
         return flip_card
 
     @staticmethod
     def _select_random_flip_card_side_id(day_plan: DayPlan):
         return choice(tuple(day_plan.day_plan_set.value))
+
+    class SideIdDoesNotBelongToCard(Exception):
+        """pass"""

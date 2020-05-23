@@ -14,24 +14,24 @@ class TestNewCardPicker(TestCase):
 
     def test_drawing_new_card_from_all_unknown_cards__return_flip_card_with_one_drawn_side(self):
         repository = FlipCardsRepositoryNewCardSpy()
-        random_card_picker = NewCardPicker(event_log=self.event_log, repository=repository)
-        flip_card = random_card_picker.draw_new_card()
+        new_card_picker = NewCardPicker(event_log=self.event_log, repository=repository)
+        flip_card = new_card_picker.draw_new_card()
 
         self.assertIsInstance(flip_card, FlipCard)
         self._assert_one_side_only_is_drawn(flip_card)
 
     def test_drawing_front_planned_card_from_all_unknown_cards__return_flip_card_with_one_drawn_side(self):
         repository = FlipCardsRepositoryFrontPlannedCardSpy()
-        random_card_picker = NewCardPicker(event_log=self.event_log, repository=repository)
-        flip_card = random_card_picker.draw_new_card()
+        new_card_picker = NewCardPicker(event_log=self.event_log, repository=repository)
+        flip_card = new_card_picker.draw_new_card()
 
         self.assertIsInstance(flip_card, FlipCard)
         self._assert_one_side_only_is_drawn(flip_card)
 
     def test_drawing_back_planned_card_from_all_unknown_cards__return_flip_card_with_one_drawn_side(self):
         repository = FlipCardsRepositoryBackPlannedCardSpy()
-        random_card_picker = NewCardPicker(event_log=self.event_log, repository=repository)
-        flip_card = random_card_picker.draw_new_card()
+        new_card_picker = NewCardPicker(event_log=self.event_log, repository=repository)
+        flip_card = new_card_picker.draw_new_card()
 
         self.assertIsInstance(flip_card, FlipCard)
         self._assert_one_side_only_is_drawn(flip_card)
