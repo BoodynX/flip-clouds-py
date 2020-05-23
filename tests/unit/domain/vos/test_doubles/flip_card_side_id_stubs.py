@@ -1,41 +1,22 @@
+from abc import ABC
 from uuid import uuid4
 
 from src.domain.vos.flip_card_side_id import FlipCardSideId
 
-front_uuid = uuid4()
-back_uuid = uuid4()
+
+class FlipCardSideId_StubAbstraction(FlipCardSideId, ABC):
+    def __init__(self):
+        """pass"""
 
 
-class FlipCardSideIdFrontStub(FlipCardSideId):
-    value = front_uuid
-
-    def __new__(cls, *args, **kwargs):
-        return FlipCardSideId(value=cls.value)
-
-
-class FlipCardSideIdBackStub(FlipCardSideId):
-    value = back_uuid
-
-    def __new__(cls, *args, **kwargs):
-        return FlipCardSideId(value=cls.value)
-
-
-class FlipCardSideIdStub(FlipCardSideId):
+class FlipCardSideId_StubFront(FlipCardSideId_StubAbstraction):
     value = uuid4()
 
-    def __new__(cls, *args, **kwargs):
-        return FlipCardSideId(value=cls.value)
+
+class FlipCardSideId_StubFront_Two(FlipCardSideId_StubAbstraction):
+    value = uuid4()
 
 
-class FlipCardSideIdStubPolish(FlipCardSideId):
-    value = front_uuid
+class FlipCardSideId_StubBack(FlipCardSideId_StubAbstraction):
+    value = uuid4()
 
-    def __new__(cls, *args, **kwargs):
-        return FlipCardSideId(value=cls.value)
-
-
-class FlipCardSideIdStubEnglish(FlipCardSideId):
-    value = back_uuid
-
-    def __new__(cls, *args, **kwargs):
-        return FlipCardSideId(value=cls.value)

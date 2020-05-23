@@ -5,8 +5,7 @@ from src.domain.entities.box import Box, BoxInterface
 from src.domain.entities.flip_card import FlipCard
 from src.domain.entities.flip_card_side import FlipCardSide
 from src.domain.vos.flip_card_side_id import FlipCardSideId
-from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardStubFrontDrawn
-from tests.unit.domain.vos.test_doubles.card_side_state_stub import CardSideStateStubPlanned
+from tests.unit.domain.entities.test_doubles.flip_card_stubs import FlipCard_StubFrontDrawnBackNew
 
 
 class BoxRepositoryInterface(ABC):
@@ -71,7 +70,7 @@ class TestNewCardsBoxManager(TestCase):
     def setUp(self) -> None:
         self.box_repository = BoxRepositorySpy()
         self.box_manager = BoxManager(repository=self.box_repository)
-        self.flip_card = FlipCardStubFrontDrawn()
+        self.flip_card = FlipCard_StubFrontDrawnBackNew()
 
     def test_add_new_card_side_to_box__drawn_side_in_primary_and_other_side_in_secondary(self):
         self.box_manager.add_card(self.flip_card)
@@ -82,7 +81,7 @@ class TestNewCardsBoxManager(TestCase):
         self._assert_box_state_saved()
 
     # def test_add_half_planned_cards_drawn_side_to_box__drawn_side_in_primary(self):
-    #     self.flip_card.back_state = CardSideStateStubPlanned()
+    #     self.flip_card.back_state = CardSideState_StubPlanned()
     #
     #     self.box_manager.add_card(self.flip_card)
     #

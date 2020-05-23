@@ -5,7 +5,7 @@ from src.domain.events.abstractions.event import Event
 from src.domain.services.event_log.listener_interface import ListenerInterface
 
 
-class EventLogSpy(EventLog):
+class EventLog_Spy(EventLog):
     def __init__(self):
         self.call_stack = []
 

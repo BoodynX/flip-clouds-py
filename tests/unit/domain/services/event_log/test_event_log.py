@@ -1,17 +1,16 @@
 from unittest.case import TestCase
 
 from src.domain.services.event_log.event_log import EventLog
-from tests.unit.domain.events.test_doubles.event_dummy import EventDummy
-from tests.unit.domain.events.test_doubles.event_dummy_second import EventDummySecond
-from tests.unit.domain.services.event_log.test_doubles.listener_spy import ListenerSpy
+from tests.unit.domain.events.test_doubles.event_dummies import Event_Dummy, Event_DummySecond
+from tests.unit.domain.services.event_log.test_doubles.listener_spy import Listener_Spy
 
 
 class TestEventLog(TestCase):
     def setUp(self) -> None:
         self.event_log = EventLog()
-        self.listener = ListenerSpy()
-        self.second_listener = ListenerSpy()
-        self.event_type = EventDummy
+        self.listener = Listener_Spy()
+        self.second_listener = Listener_Spy()
+        self.event_type = Event_Dummy
         self.event = self.event_type()
 
     def test_subscribe_listener_to_event__listener_subscribed(self):
@@ -34,7 +33,7 @@ class TestEventLog(TestCase):
                              {self.event_type.__name__: [self.listener, self.second_listener]})
 
     def test_subscribe_listener_to_multiple_events__listener_subscribed_to_events(self):
-        second_event_type = EventDummySecond
+        second_event_type = Event_DummySecond
 
         self.event_log.subscribe(listener=self.listener, event_type=self.event_type)
         self.event_log.subscribe(listener=self.listener, event_type=second_event_type)

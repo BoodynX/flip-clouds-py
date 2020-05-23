@@ -1,21 +1,21 @@
 from src.domain.vos.card_side_state import CardSideState
 
 
-class CardSideStateStubNew(CardSideState):
+class CardSideState_StubNew(CardSideState):
     value = CardSideState.StateType(CardSideState.StateType.NEW)
 
     def __init__(self):
         """pass"""
 
 
-class CardSideStateStubPlanned(CardSideState):
+class CardSideState_StubPlanned(CardSideState):
     value = CardSideState.StateType(CardSideState.StateType.PLANNED)
 
     def __init__(self):
         """pass"""
 
 
-class CardSideStateStubDrawn(CardSideState):
+class CardSideState_StubDrawn(CardSideState):
     value = CardSideState.StateType(CardSideState.StateType.DRAWN)
 
     def __init__(self):

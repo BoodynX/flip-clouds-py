@@ -8,8 +8,8 @@
 # from src.domain.vos.abstractions.value_object import ValueObject
 # from src.domain.vos.card_side_state import CardSideState
 # from src.domain.vos.sentence import Sentence
-# from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardStubNew
-# from tests.unit.domain.services.event_log.test_doubles.event_log_spy import EventLogSpy
+# from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCard_StubAllNew
+# from tests.unit.domain.services.event_log.test_doubles.event_log_spy import EventLog_Spy
 #
 #
 #
@@ -33,7 +33,7 @@
 #
 # class NewCardPickerStub(NewCardPickerInterface):
 #     def draw_new_card(self):
-#         return FlipCardStubNew()
+#         return FlipCard_StubAllNew()
 #
 #
 # class Answer(ValueObject):
@@ -80,11 +80,11 @@
 #
 # class TestStudySessionNewCards(TestCase):
 #     def setUp(self):
-#         self.event_log = EventLogSpy()
+#         self.event_log = EventLog_Spy()
 #         self.new_flip_card_box = NewFlipCardBoxSpy()
 #         self.new_card_picker = NewCardPickerStub()
 #         self.study_session = StudySession(self.event_log, self.new_flip_card_box, self.new_card_picker)
-#         self.flip_card = FlipCardStubNew()
+#         self.flip_card = FlipCard_StubAllNew()
 #         self.answer = AnswerDummy()
 #
 #     def test_first_draw__return_new_card(self):

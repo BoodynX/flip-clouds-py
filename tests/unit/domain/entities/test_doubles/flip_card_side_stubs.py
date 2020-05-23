@@ -1,28 +1,15 @@
 from src.domain.entities.flip_card_side import FlipCardSide
-from tests.unit.domain.vos.test_doubles.card_side_state_stub import CardSideStateStubDrawn, CardSideStateStubNew, \
-    CardSideStateStubPlanned
-from tests.unit.domain.vos.test_doubles.flip_card_side_id_stubs import FlipCardSideIdStubPolish, \
-    FlipCardSideIdStubEnglish
-from tests.unit.domain.vos.test_doubles.sentence_stub import SentenceStubEnglish, SentenceStubPolish
+from tests.unit.domain.vos.test_doubles.card_side_state_stubs import CardSideState_StubDrawn, CardSideState_StubNew, \
+    CardSideState_StubPlanned
+from tests.unit.domain.vos.test_doubles.flip_card_side_id_stubs import FlipCardSideId_StubFront, \
+    FlipCardSideId_StubBack
+from tests.unit.domain.vos.test_doubles.sentence_stubs import Sentence_StubBackEnglish, Sentence_StubFrontPolish
 
 
-class FlipCardSideStubNewPolish(FlipCardSide):
-    id_ = FlipCardSideIdStubPolish()
-    sentence = SentenceStubPolish()
-    state = CardSideStateStubNew()
-
-    def __new__(cls, *args, **kwargs):
-        return FlipCardSide(
-            id_=cls.id_,
-            sentence=cls.sentence,
-            state=cls.state
-        )
-
-
-class FlipCardSideStubNewEnglish(FlipCardSide):
-    id_ = FlipCardSideIdStubEnglish()
-    sentence = SentenceStubEnglish()
-    state = CardSideStateStubNew()
+class FlipCardSide_StubFrontNew(FlipCardSide):
+    id_ = FlipCardSideId_StubFront()
+    sentence = Sentence_StubFrontPolish()
+    state = CardSideState_StubNew()
 
     def __new__(cls, *args, **kwargs):
         return FlipCardSide(
@@ -32,10 +19,10 @@ class FlipCardSideStubNewEnglish(FlipCardSide):
         )
 
 
-class FlipCardSideStubDrawnEnglish(FlipCardSide):
-    id_ = FlipCardSideIdStubEnglish()
-    sentence = SentenceStubEnglish()
-    state = CardSideStateStubDrawn()
+class FlipCardSide_StubBackNew(FlipCardSide):
+    id_ = FlipCardSideId_StubBack()
+    sentence = Sentence_StubBackEnglish()
+    state = CardSideState_StubNew()
 
     def __new__(cls, *args, **kwargs):
         return FlipCardSide(
@@ -45,10 +32,10 @@ class FlipCardSideStubDrawnEnglish(FlipCardSide):
         )
 
 
-class FlipCardSideStubDrawnPolish(FlipCardSide):
-    id_ = FlipCardSideIdStubPolish()
-    sentence = SentenceStubPolish()
-    state = CardSideStateStubDrawn()
+class FlipCardSide_StubBackDrawn(FlipCardSide):
+    id_ = FlipCardSideId_StubBack()
+    sentence = Sentence_StubBackEnglish()
+    state = CardSideState_StubDrawn()
 
     def __new__(cls, *args, **kwargs):
         return FlipCardSide(
@@ -58,10 +45,10 @@ class FlipCardSideStubDrawnPolish(FlipCardSide):
         )
 
 
-class FlipCardSideStubPlannedPolish(FlipCardSide):
-    id_ = FlipCardSideIdStubPolish()
-    sentence = SentenceStubPolish()
-    state = CardSideStateStubPlanned()
+class FlipCardSide_StubFrontDrawn(FlipCardSide):
+    id_ = FlipCardSideId_StubFront()
+    sentence = Sentence_StubFrontPolish()
+    state = CardSideState_StubDrawn()
 
     def __new__(cls, *args, **kwargs):
         return FlipCardSide(
@@ -71,10 +58,23 @@ class FlipCardSideStubPlannedPolish(FlipCardSide):
         )
 
 
-class FlipCardSideStubPlannedEnglish(FlipCardSide):
-    id_ = FlipCardSideIdStubEnglish()
-    sentence = SentenceStubEnglish()
-    state = CardSideStateStubPlanned()
+class FlipCardSide_StubFrontPlanned(FlipCardSide):
+    id_ = FlipCardSideId_StubFront()
+    sentence = Sentence_StubFrontPolish()
+    state = CardSideState_StubPlanned()
+
+    def __new__(cls, *args, **kwargs):
+        return FlipCardSide(
+            id_=cls.id_,
+            sentence=cls.sentence,
+            state=cls.state
+        )
+
+
+class FlipCardSide_StubBackPlanned(FlipCardSide):
+    id_ = FlipCardSideId_StubBack()
+    sentence = Sentence_StubBackEnglish()
+    state = CardSideState_StubPlanned()
 
     def __new__(cls, *args, **kwargs):
         return FlipCardSide(
