@@ -3,6 +3,7 @@ from unittest import TestCase
 
 from src.domain.entities.box import Box, BoxInterface
 from src.domain.entities.flip_card import FlipCard
+from src.domain.entities.flip_card_side import FlipCardSide
 from src.domain.vos.flip_card_side_id import FlipCardSideId
 from tests.unit.domain.entities.test_doubles.flip_card_stub import FlipCardStubFrontDrawn
 from tests.unit.domain.vos.test_doubles.card_side_state_stub import CardSideStateStubPlanned
@@ -101,20 +102,20 @@ class TestNewCardsBoxManager(TestCase):
 
         called_method = box_stack[0][0]
         expected_method_call = Box.add_to_primary.__name__
-        submitted_value = box_stack[0][1]
+        submitted_value: FlipCardSide = box_stack[0][1]
 
         self.assertEqual(called_method, expected_method_call)
-        self.assertEqual(submitted_value, self.flip_card.front_id)
+        self.assertEqual(submitted_value.id_, self.flip_card.front_id)
 
     def _assert_other_side_added_to_secondary_box(self):
         box_stack = self.box_repository.box_spy.call_stack
 
         called_method = box_stack[1][0]
         expected_method_call = Box.add_to_secondary.__name__
-        submitted_value = box_stack[1][1]
+        submitted_value: FlipCardSide = box_stack[1][1]
 
         self.assertEqual(called_method, expected_method_call)
-        self.assertEqual(submitted_value, self.flip_card.back.id_)
+        self.assertEqual(submitted_value.id_, self.flip_card.back_id)
 
     def _assert_box_state_fetched(self):
         called_method = self.box_repository.call_stack[0][0]
