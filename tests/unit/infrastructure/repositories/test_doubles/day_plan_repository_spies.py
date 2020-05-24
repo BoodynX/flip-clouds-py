@@ -5,7 +5,7 @@ from src.domain.entities.day_plan import DayPlan
 from src.domain.repositories.day_plan_repository_interface import DayPlanRepositoryInterface
 from src.domain.vos.day import Day
 from src.domain.vos.flip_card_side_id import FlipCardSideId
-from tests.unit.domain.entities.test_doubles.day_plan_stubs import DayPlan_StubMixedSides, DayPlan_StubFrontSides
+from tests.unit.domain.entities.test_doubles.day_plan_stubs import DayPlan_StubFrontSides
 
 
 class DayPlanRepository_SpyAbstraction(DayPlanRepositoryInterface, ABC):

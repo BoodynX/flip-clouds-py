@@ -4,7 +4,7 @@
 # from src.domain.entities.flip_card import FlipCard
 # from src.domain.events.abstractions.event import Event
 # from src.domain.services.event_log.event_log import EventLog
-# from src.domain.services.new_card_picker import NewCardPickerInterface
+# from src.domain.services.new_card_picker import NewFlipCardSidePickerInterface
 # from src.domain.vos.abstractions.value_object import ValueObject
 # from src.domain.vos.card_side_state import CardSideState
 # from src.domain.vos.sentence import Sentence
@@ -31,7 +31,7 @@
 #         self.call_stack.append((self.append.__name__, flip_card))
 #
 #
-# class NewCardPickerStub(NewCardPickerInterface):
+# class NewFlipCardSidePickerStub(NewFlipCardSidePickerInterface):
 #     def draw_new_card(self):
 #         return FlipCard_StubAllNew()
 #
@@ -58,7 +58,7 @@
 # class StudySession:
 #     def __init__(self, event_log: EventLog,
 #                  container: NewFlipCardBoxInterface,
-#                  new_card_picker: NewCardPickerInterface):
+#                  new_card_picker: NewFlipCardSidePickerInterface):
 #         self.event_log = event_log
 #         self._box = container
 #         self.new_card_picker = new_card_picker
@@ -82,7 +82,7 @@
 #     def setUp(self):
 #         self.event_log = EventLog_Spy()
 #         self.new_flip_card_box = NewFlipCardBoxSpy()
-#         self.new_card_picker = NewCardPickerStub()
+#         self.new_card_picker = NewFlipCardSidePickerStub()
 #         self.study_session = StudySession(self.event_log, self.new_flip_card_box, self.new_card_picker)
 #         self.flip_card = FlipCard_StubAllNew()
 #         self.answer = AnswerDummy()

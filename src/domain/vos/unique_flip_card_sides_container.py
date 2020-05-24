@@ -1,11 +1,11 @@
 from typing import Set
 
+from src.domain.entities.flip_card_side import FlipCardSide
 from src.domain.vos.abstractions.value_object import ValueObject
-from src.domain.vos.flip_card_side_id import FlipCardSideId
 
 
 class UniqueFlipCardSidesContainer(ValueObject):
-    def _validate_value(self, value: Set[FlipCardSideId]):
+    def _validate_value(self, value: Set[FlipCardSide]):
         self._validate_type(value)
         self._validate_included_items_type(value)
         self._validate_items_uniqueness(value)
@@ -16,13 +16,13 @@ class UniqueFlipCardSidesContainer(ValueObject):
 
     def _validate_included_items_type(self, value):
         for side in value:
-            if not isinstance(side, FlipCardSideId):
-                raise self.InvalidFlipCardSideId()
+            if not isinstance(side, FlipCardSide):
+                raise self.InvalidFlipCardSide()
 
-    def _validate_items_uniqueness(self, value: set):
+    def _validate_items_uniqueness(self, value: Set[FlipCardSide]):
         id_values = set()
         for side in value:
-            id_values.add(side.value)
+            id_values.add(side.id_.value)
 
         if len(id_values) != len(value):
             raise self.ValueDuplicationDetected
@@ -30,7 +30,7 @@ class UniqueFlipCardSidesContainer(ValueObject):
     class InvalidUniqueFlipCardSidesContainerValueType(Exception):
         """pass"""
 
-    class InvalidFlipCardSideId(Exception):
+    class InvalidFlipCardSide(Exception):
         """pass"""
 
     class ValueDuplicationDetected(Exception):

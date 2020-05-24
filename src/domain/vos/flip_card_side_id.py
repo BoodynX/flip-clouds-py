@@ -1,5 +1,3 @@
-from abc import ABC, abstractmethod
-
 from src.domain.vos.abstractions.uuid_value_object import UuidValueObject
 
 

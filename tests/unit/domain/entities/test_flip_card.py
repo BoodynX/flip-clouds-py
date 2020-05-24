@@ -15,7 +15,7 @@ class TestFlipCard(TestCase):
                           front=FlipCardSide_StubFront(),
                           back=FlipCardSide_StubFront())
 
-    def test_get_opposite_side_id__submitted_side_id__return_opposite_side_id(self):
+    def test_get_opposite_side__submitted_side__return_opposite_side(self):
         front = FlipCardSide_StubFront()
         back = FlipCardSide_StubBack()
         flip_card = FlipCard(
@@ -30,7 +30,7 @@ class TestFlipCard(TestCase):
         self.assertIsInstance(fetched_back_side, FlipCardSide)
         self.assertIsInstance(fetched_front_side, FlipCardSide)
 
-    def test_get_opposite_side_id__invalid_input__raise_exception(self):
+    def test_get_opposite_side__invalid_input__raise_exception(self):
         flip_card = FlipCard(
             id_=FlipCardId_Stub(),
             front=FlipCardSide_StubFront(),

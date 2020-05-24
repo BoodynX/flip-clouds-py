@@ -1,6 +1,4 @@
 from src.domain.entities.flip_card_side import FlipCardSide
-from tests.unit.domain.vos.test_doubles.card_side_state_stubs import CardSideState_StubDrawn, CardSideState_StubNew, \
-    CardSideState_StubPlanned
 from tests.unit.domain.vos.test_doubles.flip_card_side_id_stubs import FlipCardSideId_StubFront, \
     FlipCardSideId_StubBack, FlipCardSideId_StubFront_Two
 from tests.unit.domain.vos.test_doubles.sentence_stubs import Sentence_StubBackEnglish, Sentence_StubFrontPolish

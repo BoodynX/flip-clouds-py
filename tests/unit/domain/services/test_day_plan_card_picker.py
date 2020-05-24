@@ -3,9 +3,7 @@ from unittest import TestCase
 from src.domain.entities.day_plan import DayPlan
 from src.domain.entities.flip_card import FlipCard
 from src.domain.services.day_plan_card_picker import DayPlanCardPicker
-from src.domain.vos.card_side_state import CardSideState
-from tests.unit.domain.entities.test_doubles.day_plan_stubs import DayPlan_StubFrontSides, \
-    DayPlan_StubBackSides
+from tests.unit.domain.entities.test_doubles.day_plan_stubs import DayPlan_StubFrontSides
 from tests.unit.domain.services.event_log.test_doubles.event_log_spy import EventLog_Spy
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import FlipCardsRepository_Spy
 
@@ -19,7 +17,7 @@ class TestDayPlanCardPicker(TestCase):
         repository = FlipCardsRepository_Spy()
         card_picker = DayPlanCardPicker(event_log=self.event_log, repository=repository)
 
-        flip_card = card_picker.draw_card_from_plan(day_plan=day_plan)
+        flip_card = card_picker.draw_flip_card_side_from_plan(day_plan=day_plan)
 
         self.assertIsInstance(flip_card, FlipCard)
         self._assert_repository_called_with_side_id_from_day_plan(day_plan=day_plan, repository=repository)

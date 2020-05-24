@@ -3,9 +3,9 @@ from unittest.case import TestCase
 from src.application.factories.day_plan_factory import DayPlanFactory
 from src.domain.entities.day_plan import DayPlan
 from src.domain.vos.unique_flip_card_sides_container import UniqueFlipCardSidesContainer
+from tests.unit.domain.vos.test_doubles.day_stub import Day_Stub
 from tests.unit.domain.vos.test_doubles.unique_flip_card_sides_container_stubs import \
     UniqueFlipCardSidesContainer_StubMixedSides
-from tests.unit.domain.vos.test_doubles.day_stub import Day_Stub
 
 
 class TestDayPlanFactory(TestCase):

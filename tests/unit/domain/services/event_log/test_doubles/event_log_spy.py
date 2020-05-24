@@ -1,7 +1,7 @@
 from typing import Type
 
-from src.domain.services.event_log.event_log import EventLog
 from src.domain.events.abstractions.event import Event
+from src.domain.services.event_log.event_log import EventLog
 from src.domain.services.event_log.listener_interface import ListenerInterface
 
 
