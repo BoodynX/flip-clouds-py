@@ -14,9 +14,9 @@ class DayPlan(Entity):
         self.day = day
 
     def add_to_day_plan(self, side_id: FlipCardSideId):
-        appended_unique_flip_card_sides_container: set = self._unique_flip_card_sides_container.value
-        appended_unique_flip_card_sides_container.add(side_id)
-        self._unique_flip_card_sides_container = UniqueFlipCardSidesContainer(appended_unique_flip_card_sides_container)
+        side_ids_set: set = self._unique_flip_card_sides_container.value
+        side_ids_set.add(side_id)
+        self._unique_flip_card_sides_container = UniqueFlipCardSidesContainer(side_ids_set)
 
     def pick_random_flip_card_side_id(self):
         return choice(tuple(self._unique_flip_card_sides_container.value))

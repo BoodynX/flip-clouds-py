@@ -2,7 +2,6 @@ from typing import Union
 
 from src.domain.entities.abstractions.entity import Entity
 from src.domain.entities.flip_card_side import FlipCardSide
-from src.domain.exceptions import ImmutableException
 from src.domain.vos.card_side_state import CardSideState
 from src.domain.vos.flip_card_id import FlipCardId
 

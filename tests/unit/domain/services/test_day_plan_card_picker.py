@@ -6,9 +6,7 @@ from src.domain.services.day_plan_card_picker import DayPlanCardPicker
 from src.domain.vos.card_side_state import CardSideState
 from tests.unit.domain.entities.test_doubles.day_plan_stubs import DayPlan_StubFrontSides, \
     DayPlan_StubBackSides
-from tests.unit.domain.entities.test_doubles.flip_card_stubs import FlipCard_StubAllNew
 from tests.unit.domain.services.event_log.test_doubles.event_log_spy import EventLog_Spy
-from tests.unit.domain.vos.test_doubles.flip_card_side_id_stubs import FlipCardSideId_StubFront_Two
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import \
     FlipCardsRepository_SpyFrontPlannedBackNew, FlipCardsRepository_SpyFrontNewBackPlanned, FlipCardsRepository_Spy
 

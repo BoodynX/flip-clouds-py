@@ -24,7 +24,8 @@ class DayPlanner:
         day_plan: DayPlan = self.repository.get(day=day)
 
         if not day_plan:
-            day_plan = self.factory.create_day_plan(unique_flip_card_sides_container=UniqueFlipCardSidesContainer({side_id}), day=day)
+            day_plan = self.factory.create_day_plan(
+                unique_flip_card_sides_container=UniqueFlipCardSidesContainer({side_id}), day=day)
         else:
             day_plan.add_to_day_plan(side_id=side_id)
 
