@@ -1,12 +1,12 @@
 from src.domain.entities.flip_card import FlipCard
 from src.domain.factories.flip_card_factory_interface import FlipCardFactoryInterface
 from src.domain.vos.sentence import Sentence
-from tests.unit.domain.entities.test_doubles.flip_card_stubs import FlipCard_StubAllNew
+from tests.unit.domain.entities.test_doubles.flip_card_stubs import FlipCard_Stub
 
 
 class FlipCardFactory_Spy(FlipCardFactoryInterface):
     call_stack = []
-    flip_card_stub = FlipCard_StubAllNew()
+    flip_card_stub = FlipCard_Stub()
 
     @classmethod
     def create_card(cls, front: Sentence, back: Sentence) -> FlipCard:
@@ -16,5 +16,5 @@ class FlipCardFactory_Spy(FlipCardFactoryInterface):
     @classmethod
     def get_fresh_spy(cls):
         cls.call_stack = []
-        cls.flip_card_stub = FlipCard_StubAllNew()
+        cls.flip_card_stub = FlipCard_Stub()
         return cls

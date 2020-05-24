@@ -10,7 +10,7 @@ from src.domain.vos.day_plan_id import DayPlanId
 from src.domain.vos.flip_card_side_id import FlipCardSideId
 from src.domain.vos.unique_flip_card_sides_container import UniqueFlipCardSidesContainer
 from tests.unit.application.factories.test_doubles.day_plan_factory_spy import DayPlanFactory_Spy
-from tests.unit.domain.entities.test_doubles.flip_card_stubs import FlipCard_StubAllNew
+from tests.unit.domain.entities.test_doubles.flip_card_stubs import FlipCard_Stub
 from tests.unit.domain.vos.test_doubles.day_plan_id_stub import DayPlanId_Stub
 from tests.unit.domain.vos.test_doubles.number_of_days_stub import NumberOfDays_Stub
 from tests.unit.infrastructure.repositories.test_doubles.day_plan_repository_spies import \
@@ -20,7 +20,7 @@ from tests.unit.infrastructure.repositories.test_doubles.day_plan_repository_spi
 class TestDayPlanner(TestCase):
     def setUp(self) -> None:
         self.factory = DayPlanFactory_Spy.get_fresh_spy()
-        self.flip_card = FlipCard_StubAllNew()
+        self.flip_card = FlipCard_Stub()
         self.number_of_days = NumberOfDays_Stub()
         self.event_log = EventLog()
 

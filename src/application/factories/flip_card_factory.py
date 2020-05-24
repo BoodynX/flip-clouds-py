@@ -12,18 +12,14 @@ from src.domain.vos.sentence import Sentence
 class FlipCardFactory(FlipCardFactoryInterface):
     @classmethod
     def create_card(cls, front_sentence: Sentence, back_sentence: Sentence) -> FlipCard:
-        new = CardSideState(CardSideState.StateType.NEW)
-
         front = FlipCardSide(
             id_=FlipCardSideId(uuid4()),
             sentence=front_sentence,
-            state=new
         )
 
         back = FlipCardSide(
             id_=FlipCardSideId(uuid4()),
             sentence=back_sentence,
-            state=new
         )
 
         return FlipCard(

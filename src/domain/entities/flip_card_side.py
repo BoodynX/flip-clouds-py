@@ -5,7 +5,6 @@ from src.domain.vos.sentence import Sentence
 
 
 class FlipCardSide(Entity):
-    def __init__(self, id_: FlipCardSideId, sentence: Sentence, state: CardSideState):
+    def __init__(self, id_: FlipCardSideId, sentence: Sentence):
         self.id_ = id_
         self.sentence = sentence
-        self.state = state

@@ -11,7 +11,6 @@ class TestFlipCardSide(TestCase):
         flip_card_side = FlipCardSide(
             id_=FlipCardSideId_StubFront(),
             sentence=Sentence_StubBackEnglish(),
-            state=CardSideState_StubNew(),
         )
 
         self.assertIsInstance(flip_card_side, FlipCardSide)
