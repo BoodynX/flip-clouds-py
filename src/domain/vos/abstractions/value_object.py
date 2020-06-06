@@ -22,5 +22,5 @@ class ValueObject(ABC):
     def _validate_value(self, value):
         """ Raise an exception here in case submitted value doesn't meet VOs requirements """
 
-    def equals(self, other):
+    def equals(self, other: 'ValueObject'):
         return self.value == other.value
