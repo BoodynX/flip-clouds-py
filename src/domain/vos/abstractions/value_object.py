@@ -24,3 +24,6 @@ class ValueObject(ABC):
 
     def equals(self, other: 'ValueObject'):
         return self.value == other.value
+
+    class InvalidValue(Exception):
+        """pass"""

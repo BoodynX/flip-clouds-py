@@ -11,8 +11,8 @@ class NumberOfDays(ValueObject):
         if not self.max >= value >= self.min:
             raise self.InvalidNumberOfDays()
 
-    class InvalidNumberOfDays(Exception):
+    class InvalidNumberOfDays(ValueObject.InvalidValue):
         """pass"""
 
-    class InvalidNumberOfDaysType(Exception):
+    class InvalidNumberOfDaysType(ValueObject.InvalidValue):
         """pass"""

@@ -13,5 +13,5 @@ class UuidValueObject(ValueObject):
     def _raise_exception(self):
         """pass"""
 
-    class InvalidUuid(Exception):
+    class InvalidUuid(ValueObject.InvalidValue):
         """pass"""

@@ -9,5 +9,5 @@ class Day(ValueObject):
         if not isinstance(value, datetime):
             raise self.InvalidDayValue()
 
-    class InvalidDayValue(Exception):
+    class InvalidDayValue(ValueObject.InvalidValue):
         """pass"""
