@@ -9,4 +9,5 @@ class DayPlanFactoryInterface(ABC):
     @abstractmethod
     def create_day_plan(cls, plan_items_box, day: Day) -> DayPlan:
         """pass"""
-        # TODO this is unfinished
+        # TODO this is unfinished,
+        #  need to design plan_item_box / cards buffer
