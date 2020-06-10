@@ -1,17 +1,11 @@
 from random import choice
 from unittest import TestCase
+from uuid import uuid4
 
-from src.domain.entities.abstractions.entity import Entity
-from src.domain.entities.flip_card import FlipCard
+from src.domain.entities.card_folder import CardFolder
 from src.domain.repositories.flip_card_repository_interface import FlipCardRepositoryInterface
 from src.domain.vos.side import Side
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import FlipCardRepository_Spy
-
-
-class CardFolder(Entity):
-    def __init__(self, flip_card: FlipCard, side: Side):
-        self.card = flip_card
-        self.side = side
 
 
 class NewCardPicker:
@@ -21,8 +15,8 @@ class NewCardPicker:
     def get_new_flip_card_in_folder(self):
         flip_card = self.repository.get_new()
         side = choice((Side.front(), Side.back()))
-        folder = CardFolder(flip_card=flip_card, side=side)
-        # TODO put card folder in a new cards buffer
+        folder = CardFolder(id_=uuid4(), flip_card=flip_card, side=side)
+        # TODO put card folder in a new cards folder_set
         return folder
 
 
@@ -33,7 +27,7 @@ class TestNewCardPicker(TestCase):
 
         folder = card_picker.get_new_flip_card_in_folder()
 
-        # TODO check if card folder was added to buffer
+        # TODO check if card folder was added to folder_set
         self.assertIsInstance(folder, CardFolder)
         self.assertEqual(folder.card, self.flip_card_repository.flip_card)
         self.assertIsInstance(folder.side, Side)

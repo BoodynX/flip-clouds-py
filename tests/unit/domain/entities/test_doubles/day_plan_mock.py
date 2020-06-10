@@ -14,7 +14,7 @@ class DayPlan_Mock(TestCase, IDayPlan):
 
     def add_flip_card(self, flip_card: FlipCard, side: Side):
         # TODO make a signature check helper
-        print(inspect.signature(IDayPlan.add_flip_card) == inspect.signature(DayPlan_Mock.add_flip_card))
+        # print(inspect.signature(IDayPlan.add_flip_card) == inspect.signature(DayPlan_Mock.add_flip_card))
         self.call_stack.append(method=IDayPlan.add_flip_card, params={'flip_card': flip_card, 'side': side})
 
     def assert_flip_card_added_to_plan(self, call_number: int, flip_card: FlipCard, side: Side):
