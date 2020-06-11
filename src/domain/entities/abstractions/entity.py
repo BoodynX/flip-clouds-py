@@ -6,13 +6,13 @@ class Entity(ABC):
     id_ = None
 
     def __repr__(self):
-        return f'{self.__class__.__name__}({self.id_})'
+        return f'{self.__class__.__module__}.{self.__class__.__name__}({self.id_})'
 
     def __eq__(self, other):
-        if isinstance(other, Entity):
+        if isinstance(other, self.__class__):
             return self.id_ == other.id_
         else:
             return False
 
     def __hash__(self):
-        return hash(self.id_)
+        return hash(self.__repr__())
