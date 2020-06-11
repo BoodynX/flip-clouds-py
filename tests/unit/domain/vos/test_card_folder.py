@@ -3,7 +3,7 @@ from unittest import TestCase
 from src.domain.vos.abstractions.value_object import ValueObject
 from src.domain.vos.card_folder import CardFolder
 from tests.unit.domain.entities.test_doubles.flip_card_stubs import FlipCard_Stub
-from tests.unit.domain.vos.test_doubles.side_stubs import Side_Stub_Front
+from tests.unit.domain.vos.test_doubles.side_stubs import Side_Stub_Front, Side_Stub_Back
 
 
 class TestCardFolder(TestCase):
@@ -22,3 +22,7 @@ class TestCardFolder(TestCase):
     def test_immutability__try_to_change_fields__raise_exception(self):
         self.assertRaises(ValueObject.ImmutableException, self.card_folder.__setattr__, 'card', 'anything')
         self.assertRaises(ValueObject.ImmutableException, self.card_folder.__setattr__, 'side', 'anything')
+
+    def test_equality(self):
+        self.assertTrue(self.card_folder == CardFolder(card=FlipCard_Stub(), side=Side_Stub_Front()))
+        self.assertTrue(self.card_folder != CardFolder(card=FlipCard_Stub(), side=Side_Stub_Back()))

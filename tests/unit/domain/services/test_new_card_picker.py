@@ -1,9 +1,8 @@
 from random import choice
 from unittest import TestCase
-from uuid import uuid4
 
-from src.domain.entities.card_folder import CardFolder
 from src.domain.repositories.flip_card_repository_interface import FlipCardRepositoryInterface
+from src.domain.vos.card_folder import CardFolder
 from src.domain.vos.side import Side
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import FlipCardRepository_Spy
 
@@ -15,8 +14,9 @@ class NewCardPicker:
     def get_new_flip_card_in_folder(self):
         flip_card = self.repository.get_new()
         side = choice((Side.front(), Side.back()))
-        folder = CardFolder(id_=uuid4(), flip_card=flip_card, side=side)
-        # TODO put card folder in a new cards folder_set
+        folder = CardFolder(card=flip_card, side=side)
+
+        # TODO put card folder in a NewCardsPlan
         return folder
 
 
