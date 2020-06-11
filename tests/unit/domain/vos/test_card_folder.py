@@ -20,4 +20,5 @@ class TestCardFolder(TestCase):
         self.assertRaises(ValueObject.InvalidValue, CardFolder, card=FlipCard_Stub(), side='invalid side type')
 
     def test_immutability__try_to_change_fields__raise_exception(self):
-        self.assertRaises(ValueObject.ImmutableException, )
+        self.assertRaises(ValueObject.ImmutableException, self.card_folder.__setattr__, 'card', 'anything')
+        self.assertRaises(ValueObject.ImmutableException, self.card_folder.__setattr__, 'side', 'anything')

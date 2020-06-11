@@ -13,7 +13,7 @@ class ValueObject(ABC):
 
     def _immutability_check(self, attribute: str):
         if hasattr(self, attribute):
-            raise self.ImmutableException('Value objects are immutable!')
+            raise self.ImmutableException()
 
     def _validate_type(self, obj: object, cls: type):
         if not isinstance(obj, cls):

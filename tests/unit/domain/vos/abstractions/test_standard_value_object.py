@@ -1,10 +1,9 @@
 from unittest import TestCase
 
 from src.domain.vos.abstractions.standard_value_object import StandardValueObject
-from src.domain.vos.abstractions.value_object import ValueObject
 
 
-class TestValueObject(TestCase):
+class TestStandardValueObject(TestCase):
     sample_value = 'sample value'
     other_sample_value = 'other sample value'
     invalid_value_stub = 'invalid value stub'
@@ -17,7 +16,7 @@ class TestValueObject(TestCase):
         self.assertIsInstance(self.vo, StandardValueObject)
 
     def test_immutability_of_value__on_change_attempt__raise_exception(self):
-        self.assertRaises(ValueObject.ImmutableException, self.vo.__setattr__, 'value', self.sample_value)
+        self.assertRaises(StandardValueObject.ImmutableException, self.vo.__setattr__, 'value', self.sample_value)
 
     def test_retrieving_value_parameter__on_request__return_value_parameter(self):
         self.assertEqual(self.sample_value, self.vo.value)
@@ -41,7 +40,7 @@ class TestValueObject(TestCase):
 
     class ValueObjectValidateValueExceptionStub(StandardValueObject):
         def _validate_value(self, value):
-            raise TestValueObject.ExampleValidationException()
+            raise TestStandardValueObject.ExampleValidationException()
 
     class ExampleValidationException(Exception):
         pass
