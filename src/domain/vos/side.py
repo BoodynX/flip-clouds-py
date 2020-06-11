@@ -1,9 +1,10 @@
 from enum import Enum
 
+from src.domain.vos.abstractions.standard_value_object import StandardValueObject
 from src.domain.vos.abstractions.value_object import ValueObject
 
 
-class Side(ValueObject):
+class Side(StandardValueObject):
     @classmethod
     def front(cls):
         # TODO test this

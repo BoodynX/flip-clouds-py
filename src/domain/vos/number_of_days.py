@@ -1,7 +1,7 @@
-from src.domain.vos.abstractions.value_object import ValueObject
+from src.domain.vos.abstractions.standard_value_object import StandardValueObject
 
 
-class NumberOfDays(ValueObject):
+class NumberOfDays(StandardValueObject):
     min = 1
     max = 30
 
@@ -11,8 +11,8 @@ class NumberOfDays(ValueObject):
         if not self.max >= value >= self.min:
             raise self.InvalidNumberOfDays()
 
-    class InvalidNumberOfDays(ValueObject.InvalidValue):
+    class InvalidNumberOfDays(StandardValueObject.InvalidValue):
         """pass"""
 
-    class InvalidNumberOfDaysType(ValueObject.InvalidValue):
+    class InvalidNumberOfDaysType(StandardValueObject.InvalidValue):
         """pass"""

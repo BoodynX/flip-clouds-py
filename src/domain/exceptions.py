@@ -1,2 +1,0 @@
-class ImmutableException(Exception):
-    pass

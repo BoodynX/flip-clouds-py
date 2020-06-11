@@ -3,7 +3,7 @@ from typing import Set
 from uuid import UUID
 
 from src.domain.entities.abstractions.entity import Entity
-from src.domain.entities.card_folder import CardFolder
+from src.domain.vos.card_folder import CardFolder
 
 
 class FolderSet(Entity):

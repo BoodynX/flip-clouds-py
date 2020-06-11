@@ -1,29 +1,26 @@
-from abc import ABC, abstractmethod
-
-from src.domain.exceptions import ImmutableException
+from abc import ABC
 
 
 class ValueObject(ABC):
-    def __init__(self, value):
-        self.value = value
+    def __eq__(self, other: 'ValueObject'):
+        if isinstance(other, ValueObject):
+            return self.__dict__ == other.__dict__
+        else:
+            return False
 
-    @property
-    def value(self):
-        return self._value
+    def __hash__(self):
+        return hash(tuple(self.__dict__.items()))
 
-    @value.setter
-    def value(self, value):
-        if hasattr(self, '_value'):
-            raise ImmutableException('Value objects are immutable!')
-        self._validate_value(value)
-        self._value = value
+    def _immutability_check(self, attribute: str):
+        if hasattr(self, attribute):
+            raise self.ImmutableException('Value objects are immutable!')
 
-    @abstractmethod
-    def _validate_value(self, value):
-        """ Raise an exception here in case submitted value doesn't meet VOs requirements """
-
-    def equals(self, other: 'ValueObject'):
-        return self.value == other.value
+    def _validate_type(self, obj: object, cls: type):
+        if not isinstance(obj, cls):
+            raise self.InvalidValue()
 
     class InvalidValue(Exception):
+        """pass"""
+
+    class ImmutableException(Exception):
         """pass"""
