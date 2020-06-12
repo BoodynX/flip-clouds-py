@@ -8,10 +8,10 @@ class TestUuidValueObject(TestCase):
     invalid_id = 'invalid id'
     valid_id = uuid4()
 
-    def test_invalid_day_plan_id__raise_exception(self):
+    def test_invalid_uuid__raise_exception(self):
         self.assertRaises(self.UuidVoImpl.InvalidUuid, self.UuidVoImpl, self.invalid_id)
 
-    def test_valid_day_plan_id__return_exception(self):
+    def test_valid_uuid__return_instance_with_submitted_uuid(self):
         day_plan_id = self.UuidVoImpl(self.valid_id)
 
         self.assertEqual(day_plan_id.value, self.valid_id)

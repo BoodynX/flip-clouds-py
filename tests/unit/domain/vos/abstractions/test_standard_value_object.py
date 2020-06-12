@@ -8,9 +8,8 @@ class TestStandardValueObject(TestCase):
     other_sample_value = 'other sample value'
     invalid_value_stub = 'invalid value stub'
 
-    @classmethod
-    def setUpClass(cls) -> None:
-        cls.vo = cls.StandardValueObjectImpl(cls.sample_value)
+    def setUp(self):
+        self.vo = self.StandardValueObjectImpl(self.sample_value)
 
     def test_instance__on_request__return_instance(self):
         self.assertIsInstance(self.vo, StandardValueObject)
@@ -33,6 +32,9 @@ class TestStandardValueObject(TestCase):
     def test_equality__other_vo__return_false(self):
         other_vo = self.StandardValueObjectImpl(self.other_sample_value)
         self.assertFalse(self.vo == other_vo)
+
+    def test_equality__invalid_type__return_false(self):
+        self.assertFalse(self.vo == 'something else')
 
     class StandardValueObjectImpl(StandardValueObject):
         def _validate_value(self, value):
