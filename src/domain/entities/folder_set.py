@@ -1,5 +1,5 @@
 from random import choice
-from typing import Set
+from typing import Set, Union
 from uuid import UUID
 
 from src.domain.entities.abstractions.entity import Entity
@@ -14,7 +14,7 @@ class FolderSet(Entity):
     def add(self, folder: CardFolder):
         self._folders.add(folder)
 
-    def pick_a_random_folder(self):
+    def pick_a_random_folder(self) -> Union[CardFolder, None]:
         if not self._folders:
             return None
         return choice(tuple(self._folders))
