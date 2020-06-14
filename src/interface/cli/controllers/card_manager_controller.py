@@ -1,8 +1,8 @@
 from src.interface.cli.controllers.abstractions.controller import Controller
-from src.interface.cli.controllers.main_menu_controller import CardManagerRequest
+from src.interface.cli.requests.card_manager_request import CardManagerRequest
 from src.interface.cli.requests.abstractions.request import Request
 from src.interface.cli.requests.main_menu_request import MainMenuRequest
-from src.interface.cli.views.card_manager_view import CardManagerView
+from src.interface.cli.views.card_manager.card_manager_view import CardManagerView
 
 
 class CardManagerController(Controller):
