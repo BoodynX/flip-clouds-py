@@ -7,8 +7,8 @@ from src.interface.cli.views.card_manager.card_manager_view import CardManagerVi
 
 class CardManagerController(Controller):
     @classmethod
-    def show(cls) -> str:
-        return CardManagerView.show()
+    def show(cls) -> Request:
+        return cls._make_request(option=CardManagerView.show())
 
     @classmethod
     def _make_request(cls, option: str) -> Request:

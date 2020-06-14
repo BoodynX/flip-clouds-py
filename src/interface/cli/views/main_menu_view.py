@@ -4,7 +4,7 @@ from src.interface.cli.views.abstractions.view import View
 class MainMenuView(View):
     @classmethod
     def show(cls, message: str = '') -> str:
-        header = "Welcome to Flip Clouds CLI! :)"
+        header = 'Welcome to Flip Clouds CLI! :)'
         return cls._print_view(header, message)
 
     @classmethod
