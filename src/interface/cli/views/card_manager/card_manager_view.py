@@ -10,4 +10,5 @@ class CardManagerView(View):
     def _template(cls) -> str:
         return '1 - Add Card\n' \
                '\n' \
-               'M - Main Menu\n\n'
+               'M - Main Menu\n' \
+               'Q - Quit\n\n'

@@ -12,10 +12,10 @@ class Controller(ABC):
     @classmethod
     def handle(cls, request: Request) -> Request:
         if request.option:
-            return cls._make_request(option=request.option)
+            return cls._route_request(option=request.option)
         return cls.show()
 
     @classmethod
     @abstractmethod
-    def _make_request(cls, option: str) -> Request:
+    def _route_request(cls, option: str) -> Request:
         pass
