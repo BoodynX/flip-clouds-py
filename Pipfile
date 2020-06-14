@@ -8,6 +8,9 @@ verify_ssl = true
 [packages]
 coverage = "*"
 freezegun = "*"
+click = "*"
+colorama = "*"
+pyfiglet = "*"
 
 [requires]
 python_version = "3.8"

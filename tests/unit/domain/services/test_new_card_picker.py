@@ -1,14 +1,14 @@
 from random import choice
 from unittest import TestCase
 
-from src.domain.repositories.flip_card_repository_interface import FlipCardRepositoryInterface
+from src.domain.repositories.flip_card_repository_interface import IFlipCardRepository
 from src.domain.vos.card_folder import CardFolder
 from src.domain.vos.side import Side
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import FlipCardRepository_Spy
 
 
 class NewCardPicker:
-    def __init__(self, repository: FlipCardRepositoryInterface):
+    def __init__(self, repository: IFlipCardRepository):
         self.repository = repository
 
     def get_new_flip_card_in_folder(self):
