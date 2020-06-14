@@ -1,7 +1,7 @@
 from typing import List, Type
 
 from src.domain.events.abstractions.event import Event
-from src.domain.services.event_log.listener_interface import ListenerInterface
+from src.domain.services.event_log.listener_interface import IListener
 
 
 class EventLog:
@@ -13,11 +13,11 @@ class EventLog:
         if event_name not in self._subscribers:
             return
 
-        listeners: List[ListenerInterface] = self._subscribers[event_name]
+        listeners: List[IListener] = self._subscribers[event_name]
         for listener in listeners:
             listener.handle(event=event)
 
-    def subscribe(self, listener: ListenerInterface, event_type: Type[Event]):
+    def subscribe(self, listener: IListener, event_type: Type[Event]):
         if event_type.__name__ not in self._subscribers:
             self._subscribers[event_type.__name__] = [listener]
 

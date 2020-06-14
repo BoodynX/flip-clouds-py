@@ -1,8 +1,8 @@
 from src.domain.events.abstractions.event import Event
-from src.domain.services.event_log.listener_interface import ListenerInterface
+from src.domain.services.event_log.listener_interface import IListener
 
 
-class Listener_Spy(ListenerInterface):
+class Listener_Spy(IListener):
     def __init__(self):
         self.call_stack = []
 

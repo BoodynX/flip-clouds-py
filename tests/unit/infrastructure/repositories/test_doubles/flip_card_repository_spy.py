@@ -1,9 +1,9 @@
 from src.domain.entities.flip_card import FlipCard
-from src.domain.repositories.flip_card_repository_interface import FlipCardRepositoryInterface
+from src.domain.repositories.flip_card_repository_interface import IFlipCardRepository
 from tests.unit.domain.entities.test_doubles.flip_card_stubs import FlipCard_Stub
 
 
-class FlipCardRepository_Spy(FlipCardRepositoryInterface):
+class FlipCardRepository_Spy(IFlipCardRepository):
 
     def __init__(self):
         self.call_stack = []

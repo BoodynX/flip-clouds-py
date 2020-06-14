@@ -1,10 +1,10 @@
 from src.domain.entities.flip_card import FlipCard
-from src.domain.factories.flip_card_factory_interface import FlipCardFactoryInterface
+from src.domain.factories.flip_card_factory_interface import IFlipCardFactory
 from src.domain.vos.sentence import Sentence
 from tests.unit.domain.entities.test_doubles.flip_card_stubs import FlipCard_Stub
 
 
-class FlipCardFactory_Spy(FlipCardFactoryInterface):
+class FlipCardFactory_Spy(IFlipCardFactory):
     call_stack = []
     flip_card_stub = FlipCard_Stub()
 
