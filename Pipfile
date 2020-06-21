@@ -6,11 +6,11 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-coverage = "*"
-freezegun = "*"
-click = "*"
-colorama = "*"
-pyfiglet = "*"
+coverage = "5.1"
+freezegun = "0.3.*"
+click = "7.1.*"
+colorama = "0.4.*"
+pyfiglet = "0.8.post1"
 
 [requires]
 python_version = "3.8"
