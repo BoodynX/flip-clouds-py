@@ -1,4 +1,3 @@
-import inspect
 from unittest.case import TestCase
 
 from src.domain.entities.day_plan import IDayPlan

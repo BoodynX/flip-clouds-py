@@ -11,8 +11,8 @@ class CallStack:
     def __init__(self):
         self._stack = []
 
-    def append(self, method: Callable, **kwargs):
-        self._stack.append(Call(method=method, **kwargs))
+    def append(self, method: Callable, params: dict):
+        self._stack.append(Call(method=method, params=params))
 
     def call(self, number: int) -> Call:
         number -= 1

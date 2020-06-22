@@ -1,3 +1,4 @@
+from abc import abstractmethod, ABC
 from typing import Type
 
 from src.domain.entities.flip_card import FlipCard
@@ -8,7 +9,13 @@ from src.domain.services.event_log.event_log import EventLog
 from src.domain.vos.sentence import Sentence
 
 
-class FlipCardManager:
+class IFlipCardManager(ABC):
+    @abstractmethod
+    def create_card(self, front: Sentence, back: Sentence, factory: Type[IFlipCardFactory]):
+        pass
+
+
+class FlipCardManager(IFlipCardManager):
     def __init__(self, event_log: EventLog, repository: IFlipCardRepository):
         self.repository = repository
         self.event_log = event_log
