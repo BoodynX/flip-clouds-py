@@ -1,4 +1,4 @@
-from src.application.request_models.new_flip_card_request import NewFlipCardRequest
+from src.application.requests.new_flip_card_request import NewFlipCardRequest
 from tests.unit.domain.vos.test_doubles.sentence_stubs import Sentence_StubFrontPolish, Sentence_StubBackEnglish
 
 

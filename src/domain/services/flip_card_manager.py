@@ -11,7 +11,7 @@ from src.domain.vos.sentence import Sentence
 
 class IFlipCardManager(ABC):
     @abstractmethod
-    def create_card(self, front: Sentence, back: Sentence, factory: Type[IFlipCardFactory]):
+    def create_card(self, front: Sentence, back: Sentence, factory: Type[IFlipCardFactory]) -> FlipCard:
         pass
 
 
@@ -20,7 +20,9 @@ class FlipCardManager(IFlipCardManager):
         self.repository = repository
         self.event_log = event_log
 
-    def create_card(self, front: Sentence, back: Sentence, factory: Type[IFlipCardFactory]):
+    def create_card(self, front: Sentence, back: Sentence, factory: Type[IFlipCardFactory]) -> FlipCard:
         flip_card: FlipCard = factory.create_card(front=front, back=back)
         self.repository.save(flip_card=flip_card)
         self.event_log.fire(event=NewCardCreated(flip_card=flip_card))
+
+        return flip_card
