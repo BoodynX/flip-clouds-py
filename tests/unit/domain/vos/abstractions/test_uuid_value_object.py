@@ -17,6 +17,6 @@ class TestUuidValueObject(TestCase):
         self.assertEqual(day_plan_id.value, self.valid_id)
 
     class UuidVoImpl(UuidValueObject):
-        def _raise_exception(self):
-            raise self.InvalidUuid()
+        def _raise_exception(self, value):
+            raise self.InvalidUuid(value)
 

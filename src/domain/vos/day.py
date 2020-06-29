@@ -7,7 +7,7 @@ class Day(StandardValueObject):
 
     def _validate_value(self, value):
         if not isinstance(value, datetime):
-            raise self.InvalidDayValue()
+            raise self.InvalidDayValue(value)
 
     class InvalidDayValue(StandardValueObject.InvalidValue):
         """pass"""

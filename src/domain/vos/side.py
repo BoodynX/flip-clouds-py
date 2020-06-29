@@ -17,7 +17,7 @@ class Side(StandardValueObject):
 
     def _validate_value(self, value: 'Type'):
         if not isinstance(value, self.Type):
-            raise self.InvalidSideType()
+            raise self.InvalidSideType(value)
 
     class Type(Enum):
         FRONT = 'front'

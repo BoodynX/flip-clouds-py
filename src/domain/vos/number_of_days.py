@@ -7,9 +7,9 @@ class NumberOfDays(StandardValueObject):
 
     def _validate_value(self, value: int):
         if not isinstance(value, int):
-            raise self.InvalidNumberOfDaysType()
+            raise self.InvalidNumberOfDaysType(value)
         if not self.max >= value >= self.min:
-            raise self.InvalidNumberOfDays()
+            raise self.InvalidNumberOfDays(value)
 
     class InvalidNumberOfDays(StandardValueObject.InvalidValue):
         """pass"""

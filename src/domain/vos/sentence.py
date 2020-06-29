@@ -13,7 +13,7 @@ class Sentence(StandardValueObject):
     - question marks
     - exclamation marks
     """
-    valid_pattern = re.compile(r'^[\w\' -]+$')
+    valid_pattern = re.compile(r'^[\w\' -?!]+$')
 
     def _validate_value(self, value: str):
         self._validate_type(obj=value, cls=str)

@@ -7,10 +7,10 @@ from src.domain.vos.abstractions.standard_value_object import StandardValueObjec
 class UuidValueObject(StandardValueObject):
     def _validate_value(self, value: UUID):
         if not isinstance(value, UUID):
-            self._raise_exception()
+            self._raise_exception(value)
 
     @abstractmethod
-    def _raise_exception(self):
+    def _raise_exception(self, value):
         """pass"""
 
     class InvalidUuid(StandardValueObject.InvalidValue):
