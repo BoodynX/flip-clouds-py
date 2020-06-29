@@ -4,7 +4,6 @@ from src.interface.cli.requests.card_manager_request import CardManagerRequest
 from src.interface.cli.requests.main_menu_request import MainMenuRequest
 from src.interface.cli.views.goodbye_screen import GoodbyeScreen
 from src.interface.cli.views.main_menu_view import MainMenuView
-from src.interface.cli.views.utils.printing_tools import pt
 
 
 class MainMenuController(Controller):
