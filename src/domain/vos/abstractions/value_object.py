@@ -17,10 +17,11 @@ class ValueObject(ABC):
 
     def _validate_type(self, obj: object, cls: type):
         if not isinstance(obj, cls):
-            raise self.InvalidValue()
+            raise self.InvalidValue(obj)
 
     class InvalidValue(Exception):
-        """pass"""
+        def __init__(self, value):
+            self.value = value
 
     class ImmutableException(Exception):
         """pass"""

@@ -10,6 +10,8 @@ class Sentence(StandardValueObject):
     - spaces
     - hyphens
     - apostrophes
+    - question marks
+    - exclamation marks
     """
     valid_pattern = re.compile(r'^[\w\' -]+$')
 
@@ -17,7 +19,7 @@ class Sentence(StandardValueObject):
         self._validate_type(obj=value, cls=str)
         value = value.strip()
         if not self.valid_pattern.match(value):
-            raise self.InvalidSentence()
+            raise self.InvalidSentence(value)
 
-    class InvalidSentence(Exception):
+    class InvalidSentence(StandardValueObject.InvalidValue):
         pass

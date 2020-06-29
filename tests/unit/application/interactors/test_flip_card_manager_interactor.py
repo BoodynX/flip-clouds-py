@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from src.application.factories.flip_card_factory import FlipCardFactory
-from src.application.interactors.flip_card_manager_interactor import FlipCardInteractor
+from src.application.interactors.flip_card_manager_interactor import FlipCardManagerInteractor
 from src.domain.services.flip_card_manager import IFlipCardManager
 from tests.unit.application.request_models.test_doubles.new_flip_card_request_stub import NewFlipCardRequest_Stub
 from tests.unit.domain.services.test_doubles.flip_card_manager_spy import FlipCardManager_Spy
@@ -11,11 +11,11 @@ class TestFlipCardManagerInteractor(TestCase):
     def test_add_card__card_saved_in_repository(self):
         self.new_flip_card_request = NewFlipCardRequest_Stub()
         self.flip_card_manager = FlipCardManager_Spy()
-        interactor = FlipCardInteractor(
+        interactor = FlipCardManagerInteractor(
             flip_card_manager=self.flip_card_manager
         )
 
-        interactor.add_card(request=self.new_flip_card_request)
+        interactor.add_card(request_model=self.new_flip_card_request)
 
         self._assert_sentences_passed_to_flip_card_manager()
 
