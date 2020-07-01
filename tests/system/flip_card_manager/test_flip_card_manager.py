@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from starlette.testclient import TestClient
 
-from main import app
+from src.interface.http.framework.app import app
 from src.interface.http.flip_card_manager.routes import ADD_CARD
 
 

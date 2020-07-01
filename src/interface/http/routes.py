@@ -1,4 +1,6 @@
-from src.interface.http.flip_card_manager.routes import *
+from fastapi import APIRouter
+
+router = APIRouter()
 
 ROOT = '/'
 

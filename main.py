@@ -1,4 +1,3 @@
-from src.interface.http.exception_handlers import *
-from src.interface.http.routes import *
+from src.interface.http.framework.bootstrap import bootstrap_app
 
-app.include_router(router)
+app = bootstrap_app()
