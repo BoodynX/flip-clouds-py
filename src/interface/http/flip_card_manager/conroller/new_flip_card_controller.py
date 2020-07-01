@@ -5,7 +5,6 @@ from src.domain.services.event_log.event_log import EventLog
 from src.domain.services.flip_card_manager import FlipCardManager
 from src.domain.vos.sentence import Sentence
 from src.interface.http.flip_card_manager.requests.new_flip_card_request import NewFlipCardRequestModel
-from src.interface.http.flip_card_manager.responses.new_flip_card import NewFlipCardResponseModel
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import FlipCardRepository_Spy
 
 

@@ -1,6 +1,4 @@
-from src.interface.http.bootstrap_http import router
-
-import src.interface.http.flip_card_manager.routes
+from src.interface.http.flip_card_manager.routes import *
 
 ROOT = '/'
 
