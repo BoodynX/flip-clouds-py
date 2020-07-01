@@ -12,7 +12,7 @@ from src.domain.vos.sentence import Sentence
 class IFlipCardManager(ABC):
     @abstractmethod
     def create_card(self, front: Sentence, back: Sentence, factory: Type[IFlipCardFactory]) -> FlipCard:
-        pass
+        """pass"""
 
 
 class FlipCardManager(IFlipCardManager):
