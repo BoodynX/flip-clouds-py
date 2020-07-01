@@ -3,7 +3,7 @@ from unittest.case import TestCase
 from src.domain.entities.day_plan import IDayPlan
 from src.domain.entities.flip_card import FlipCard
 from src.domain.vos.side import Side
-from tests.utils import CallStack
+from tests.framework.utils import CallStack
 
 
 class DayPlan_Mock(TestCase, IDayPlan):
