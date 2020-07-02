@@ -1,6 +1,6 @@
 from src.domain.entities.day_plan import IDayPlan
 from tests.unit.domain.entities.test_doubles.day_plan_mock import DayPlan_Mock
-from src.domain.repositories.day_plan_repository_interface import IDayPlanRepository
+from src.domain.repositories.i_day_plan_repository import IDayPlanRepository
 from tests.framework.utils import CallStack
 
 

@@ -1,7 +1,7 @@
 from random import choice
 from unittest import TestCase
 
-from src.domain.repositories.flip_card_repository_interface import IFlipCardRepository
+from src.domain.repositories.i_flip_card_repository import IFlipCardRepository
 from src.domain.vos.card_folder import CardFolder
 from src.domain.vos.side import Side
 from tests.unit.infrastructure.repositories.test_doubles.flip_card_repository_spy import FlipCardRepository_Spy

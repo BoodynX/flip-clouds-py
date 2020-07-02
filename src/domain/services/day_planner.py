@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
 from src.domain.entities.flip_card import FlipCard
-from src.domain.repositories.day_plan_repository_interface import IDayPlanRepository
+from src.domain.repositories.i_day_plan_repository import IDayPlanRepository
 from src.domain.services.event_log.event_log import EventLog
 from src.domain.vos.day import Day
 from src.domain.vos.number_of_days import NumberOfDays

@@ -3,7 +3,7 @@ from unittest import TestCase
 
 from freezegun import freeze_time
 
-from src.domain.repositories.day_plan_repository_interface import IDayPlanRepository
+from src.domain.repositories.i_day_plan_repository import IDayPlanRepository
 from src.domain.services.day_planner import DayPlanner
 from src.domain.vos.day import Day
 from tests.unit.domain.entities.test_doubles.flip_card_stubs import FlipCard_Stub
