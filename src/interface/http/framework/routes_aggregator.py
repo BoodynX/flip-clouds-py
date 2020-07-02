@@ -1,4 +1,4 @@
-from src.interface.http.flip_card_manager.routes import router as flip_card_manager_router
+from src.interface.http.contexts.flip_card_manager.routes import router as flip_card_manager_router
 from src.interface.http.routes import router as root_router
 
 

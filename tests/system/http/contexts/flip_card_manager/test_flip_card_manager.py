@@ -1,20 +1,15 @@
-from unittest import TestCase
-
-from starlette.testclient import TestClient
-
-from src.interface.http.framework.app import app
-from src.interface.http.flip_card_manager.routes import ADD_CARD
+from src.interface.http.contexts.flip_card_manager.routes import ADD_CARD
+from tests.system.http.abstractions.system_test import SystemTest
 
 
-class TestFlipCardManager(TestCase):
+class TestFlipCardManager(SystemTest):
     def test_add_card__card_stored_in_db(self):
-        client = TestClient(app)
         json_payload = {
             "front": "co jest?",
             "back": "what's up?"
         }
 
-        response = client.post(
+        response = self.client.post(
             url=ADD_CARD,
             json=json_payload
         )
