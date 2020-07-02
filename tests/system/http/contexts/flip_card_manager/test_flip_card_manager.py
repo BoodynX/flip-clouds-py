@@ -2,13 +2,14 @@ from uuid import UUID
 
 from src.interface.http.contexts.flip_card_manager.routes import ADD_CARD
 from tests.system.http.abstractions.system_test import SystemTest
+from tests.unit.domain.vos.test_doubles.sentence_stubs import Sentence_StubFrontPolish, Sentence_StubBackEnglish
 
 
 class TestFlipCardManager(SystemTest):
     def test_add_card__card_stored_in_db(self):
         json_payload = {
-            "front": "co jest?",
-            "back": "what's up?"
+            "front": Sentence_StubFrontPolish.value,
+            "back": Sentence_StubBackEnglish.value
         }
 
         response = self.client.post(
